@@ -3,13 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Project/Maven2/JavaApp/src/main/java/${packagePath}/${mainClassName}.java to edit this template
  */
 
-package it.unisa.diem.ing_software.progetto_software;
+package it.unisa.diem.ing_software.rubricaMain;
 
 /**
  *
  * @author bvisc
  */
-public class Progetto_Software {
+public class RubricaMain {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
