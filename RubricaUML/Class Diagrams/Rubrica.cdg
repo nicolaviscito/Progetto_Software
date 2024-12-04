@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="newClassDiagramTemplate">
+  <ClassDiagramComponents>
+    <Class name="Contatto" package="" visibility="public" xPosition="579.0" yPosition="265.0">
+      <Fields>
+        <Field name="nome" type="String" visibility="private"/>
+        <Field name="cognome" type="String" visibility="private"/>
+        <Field name="Email" type="List&lt;String&gt;" visibility="private"/>
+        <Field name="NumTel" type="List&lt;String&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nome"/>
+          <Argument type="String" name="cognome"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNome" returnType="String" visibility="public"/>
+        <Method name="getCognome" returnType="String" visibility="public"/>
+        <Method name="setNome" returnType="String" visibility="public"/>
+        <Method name="setCognome" returnType="String" visibility="public"/>
+        <Method name="aggiungiEmail" returnType="String" visibility="public">
+          <Argument type="String" name="Email"/>
+        </Method>
+        <Method name="eliminaEmail" returnType="String" visibility="public">
+          <Argument type="String" name="Email"/>
+        </Method>
+        <Method name="aggiungiNumTel" returnType="String" visibility="public">
+          <Argument type="String" name="TelNum"/>
+        </Method>
+        <Method name="eliminaNumTel" returnType="String" visibility="public">
+          <Argument type="String" name="TelNum"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Utente" package="" visibility="public" xPosition="584.0" yPosition="658.0">
+      <Fields>
+        <Field name="username" type="String" visibility="private"/>
+        <Field name="password" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="password"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getUsername" returnType="String" visibility="public"/>
+        <Method name="getPassword" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ElencoTelefonico" package="" visibility="public" xPosition="198.0" yPosition="299.0">
+      <Fields>
+        <Field name="rubrica" type="List&lt;Contatto&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="creaContatto" returnType="Contatto" visibility="public">
+          <Argument type="Contatto" name="c"/>
+        </Method>
+        <Method name="eliminaContatto" returnType="Contatto" visibility="public">
+          <Argument type="Contatto" name="c"/>
+        </Method>
+        <Method name="modificaContatto" returnType="Contatto" visibility="public">
+          <Argument type="Contatto" name="c"/>
+        </Method>
+        <Method name="cercaContatto" returnType="Contatto" visibility="public">
+          <Argument type="Contatto" name="c"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="GestioneUtente" package="" visibility="public" xPosition="623.0" yPosition="933.0">
+      <Fields>
+        <Field name="utenti" type="List&lt;Utente&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="modificaUsername" returnType="void" visibility="public"/>
+        <Method name="modificaPassword" returnType="void" visibility="public"/>
+        <Method name="eliminaProfilo" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Rubrica" package="" visibility="public" xPosition="623.0" yPosition="91.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="Main" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="GestioneFileEsterno" package="" visibility="public" xPosition="206.0" yPosition="642.0">
+      <Fields>
+        <Field name="e" type="ElencoTelefonico" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="ImportaFile" returnType="String" visibility="public">
+          <Argument type="String" name="filename"/>
+        </Method>
+        <Method name="EsportaFile" returnType="String" visibility="public">
+          <Argument type="String" name="filename"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="LoginView" package="" visibility="public" xPosition="930.0" yPosition="537.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="start" returnType="Stage" visibility="public">
+          <Argument type="Stage" name="primaryStage"/>
+        </Method>
+        <Method name="main" returnType="String[]" visibility="public">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="RegistratiView" package="" visibility="public" xPosition="930.0" yPosition="698.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="start" returnType="Stage" visibility="public">
+          <Argument type="Stage" name="primaryStage"/>
+        </Method>
+        <Method name="main" returnType="String[]" visibility="public">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ProfiloView" package="" visibility="public" xPosition="930.0" yPosition="853.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="start" returnType="Stage" visibility="public">
+          <Argument type="Stage" name="primaryStage"/>
+        </Method>
+        <Method name="main" returnType="String[]" visibility="public">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="CreaContattoView" package="" visibility="public" xPosition="365.0" yPosition="117.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="start" returnType="Stage" visibility="public">
+          <Argument type="Stage" name="primaryStage"/>
+        </Method>
+        <Method name="main" returnType="String[]" visibility="public">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ModificaContattoView" package="" visibility="public" xPosition="52.0" yPosition="117.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="start" returnType="Stage" visibility="public">
+          <Argument type="Stage" name="primaryStage"/>
+        </Method>
+        <Method name="main" returnType="String[]" visibility="public">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="Has" source="ElencoTelefonico" target="Contatto" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="Has" source="Utente" target="Contatto" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="Has" source="ElencoTelefonico" target="GestioneFileEsterno" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="Has" source="GestioneUtente" target="Utente" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
