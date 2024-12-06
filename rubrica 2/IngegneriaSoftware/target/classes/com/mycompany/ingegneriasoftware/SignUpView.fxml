@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="495.0" prefWidth="341.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.ingegneriasoftware.SignUpViewController">
+   <children>
+      <Button fx:id="confirmButton" layoutX="113.0" layoutY="430.0" mnemonicParsing="false" onAction="#openMailView" prefHeight="31.0" prefWidth="116.0" text="Conferma">
+         <font>
+            <Font name="Cambria Bold" size="15.0" />
+         </font>
+      </Button>
+      <TextField fx:id="nameField" alignment="CENTER" layoutX="79.0" layoutY="176.0" opacity="0.5" prefHeight="30.0" prefWidth="187.0" promptText="Nome">
+         <font>
+            <Font name="Cambria Bold" size="15.0" />
+         </font>
+      </TextField>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="72.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" />
+      <TextField fx:id="usernameField" alignment="CENTER" layoutX="79.0" layoutY="258.0" opacity="0.5" prefHeight="30.0" prefWidth="187.0" promptText="Username">
+         <font>
+            <Font name="Cambria Bold" size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="surnameField" alignment="CENTER" layoutX="79.0" layoutY="218.0" opacity="0.5" prefHeight="30.0" prefWidth="187.0" promptText="Cognome">
+         <font>
+            <Font name="Cambria Bold" size="15.0" />
+         </font>
+      </TextField>
+      <PasswordField fx:id="passwordField" alignment="CENTER" layoutX="79.0" layoutY="299.0" opacity="0.5" prefHeight="30.0" prefWidth="187.0" promptText="Password">
+         <font>
+            <Font name="Cambria Bold" size="15.0" />
+         </font>
+      </PasswordField>
+      <TextField fx:id="phoneField" alignment="CENTER" layoutX="77.0" layoutY="339.0" opacity="0.5" prefHeight="30.0" prefWidth="187.0" promptText="Telefono">
+         <font>
+            <Font name="Cambria Bold" size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="mailField" alignment="CENTER" layoutX="77.0" layoutY="378.0" opacity="0.5" prefHeight="30.0" prefWidth="187.0" promptText="E-Mail">
+         <font>
+            <Font name="Cambria Bold" size="15.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>
