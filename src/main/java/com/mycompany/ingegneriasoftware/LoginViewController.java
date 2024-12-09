@@ -74,8 +74,8 @@ public class LoginViewController implements Initializable {
             ///< Controllo per verificare se "Username" e "Password" sono corretti.
             if((u.getUsername().equals(usernameField.getText())) && (u.getPassword().equals(passwordField.getText()))){
                 
-                //visualizza l'interfaccia della rubrica
-                System.out.println("credenziali corrette"); //log per vedere se funziona bene il check
+                InitBindings.stage.close();
+                InitBindings.openNewStage(new Scene(App.loadFXML("RubricaView")));
             }
             else{
                 
@@ -84,8 +84,6 @@ public class LoginViewController implements Initializable {
                 errorLabel.setText("Le credenziali inserite non sono valide.");
             }
         }
-        InitBindings.stage.close();
-        InitBindings.openNewStage(new Scene(App.loadFXML("RubricaView")));
     }
 
     @FXML
