@@ -23,6 +23,7 @@ import utenteContatto.ElencoContatti;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import utenteContatto.Contatto;
 
 /**
@@ -75,21 +76,22 @@ public class RubricaViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb){
         //TODO        
         this.infoPanel.setOpacity(0);
+        this.delateButton.setDisable(true);
+        this.modifyButton.setDisable(true);
         this.elencoContatti = new ElencoContatti();
         elencoContattiOsservabile = FXCollections.observableList(elencoContatti.getElencoContatti());
             
         /* istruzioni per prova della search box */
         
         this.contactColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue()));
-        ObservableList<String> data = FXCollections.observableArrayList(
-            "Giuseppe",
-            "Nicola"
-        );
+        ObservableList<String> data = FXCollections.observableArrayList();
+        data.add(new Contatto("Nicola" , "Viscito" , "" , "" , "" , "" , "" , "").getNome());
+        data.add(new Contatto("Giuseppe" , "Viscito" , "" , "" , "" , "" , "" , "").getNome());
         
         FilteredList<String> filteredData = new FilteredList<>(data, s -> true);
         
         this.contactBox.setItems(data);
-        this.searchField.textProperty().addListener((Observable , oldValue , newValue) -> {
+        /*this.searchField.textProperty().addListener((Observable , oldValue , newValue) -> {
             filteredData.setPredicate(item -> {
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
@@ -98,7 +100,7 @@ public class RubricaViewController implements Initializable {
             });
             this.contactBox.setItems(filteredData);
         });
-        
+        */
         /* ---------------------------------------------------- */
         
         
@@ -127,5 +129,20 @@ public class RubricaViewController implements Initializable {
     @FXML
     private void openProfileView(ActionEvent event) {
     }
+
     
+/**
+ * @brief metodo per visualizzare le informazioni di un contatto nel panel dedicato 
+ * 
+ * @param[in] Il metodo ha in input l'evento "Click su una riga della tabella".
+ * @return Nessun valore di ritorno.
+ * 
+ * @author Giuseppe Messalino.
+ */
+    @FXML
+    private void openContactView(MouseEvent event) {
+        this.infoPanel.setOpacity(1);
+        this.delateButton.setDisable(false);
+        this.modifyButton.setDisable(false);
+    }
 }
