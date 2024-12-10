@@ -21,6 +21,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import utenteContatto.ElencoContatti;
 import utenteContatto.ElencoUtenti;
 import utenteContatto.Utente;
 
@@ -36,24 +37,23 @@ import utenteContatto.Utente;
  */
 public class SignUpViewController implements Initializable {
     
-    
     ///< Attributi per l'interfaccia grafica della registrazione utente ideati e scritti da Giuseppe Messalino.
     private ElencoUtenti elencoUtenti = new ElencoUtenti();
 
     @FXML
-    private Button confirmButton;
+    private static Button confirmButton;
     @FXML
-    private TextField nameField;
+    private static TextField nameField;
     @FXML
-    private TextField usernameField;
+    private static TextField usernameField;
     @FXML
-    private TextField surnameField;
+    private static TextField surnameField;
     @FXML
-    private PasswordField passwordField;
+    private static PasswordField passwordField;
     @FXML
-    private TextField phoneField;
+    private static TextField phoneField;
     @FXML
-    private TextField mailField;
+    private static TextField mailField;
 
     /**
      * Initializes the controller class.
@@ -82,7 +82,7 @@ public class SignUpViewController implements Initializable {
         ///< Salva le informazioni prese dai TextField nell'interfaccia "SignUpView".
         salvaUserInfoCSV();
         
-        ///< Dopo aver scritto le informaizoni dell'utente nel file "ElencoUtenti.csv", l'interfaccia "SignUpView" si chiude  e si apre l'interfaccia della rubrica "RubricaView".
+        ///< Chiusura dell'interfaccia "SignUpView" e apertura dell'interfaccia "RubricaView".
         InitBindings.stage.close();
         InitBindings.openNewStage(new Scene(App.loadFXML("RubricaView")));
     }
@@ -99,7 +99,7 @@ public class SignUpViewController implements Initializable {
      * @author Nicola Viscito.
      * @throws IOException 
      */
-    public void salvaUserInfoCSV() throws IOException{
+    public static void salvaUserInfoCSV() throws IOException{
         
         ///< Istanziamento di due oggetti "PrintWriter", "BufferedWriter" e "FileWriter" per la scrittura sul file "ElencoUtenti.csv".
         try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("ElencoUtenti.csv")))){

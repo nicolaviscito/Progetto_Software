@@ -17,7 +17,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import utenteContatto.Contatto;
 import utenteContatto.ElencoContatti;
 
@@ -34,7 +36,7 @@ import utenteContatto.ElencoContatti;
 public class NewContactViewController implements Initializable {
     
     ///< Attributi per l'interfaccia grafica della creazione contatto ideati e scritti da Nicola Viscito.
-    private ElencoContatti elencoContatti = new ElencoContatti(); 
+    private ElencoContatti elencoContatti;
     @FXML
     private TextField newNameField;
     @FXML
@@ -53,6 +55,8 @@ public class NewContactViewController implements Initializable {
     private TextField newSurnameField;
     @FXML
     private Button createContactButton;
+    @FXML
+    private Label errorLabel;
 
     /**
      * Initializes the controller class.
@@ -76,22 +80,31 @@ public class NewContactViewController implements Initializable {
      */
     @FXML
     private void newCreateContact(ActionEvent event) throws IOException {
+        if(newNameField.getText().isEmpty() && newSurnameField.getText().isEmpty()){
+     
+            ///< Label di errore che viene mostrata se tutti e due i campi non sono stati riempiti.
+            errorLabel.setTextFill(Color.RED);
+            errorLabel.setText("Inserire almeno un nome o un cognome.");
+        }
+        else{
+            
+            ///< Creazione del nuovo contatto, a cui passiamo i parametri presi dai TextFields dell'interfaccia di creazione contatto "NewContactView".
+            Contatto c = new Contatto(newNameField.getText(), newSurnameField.getText(), 
+                                    newEmail1Field.getText(), newEmail2Field.getText(),
+                                    newEmail3Field.getText(), newTelephone1Field.getText(),
+                                    newTelephone2Field.getText(), newTelephone3Field.getText());
         
-        ///< Creazione del nuovo contatto, a cui passiamo i parametri presi dai TextFields dell'interfaccia di creazione contatto "NewContactView".
-        Contatto c = new Contatto(newNameField.getText(), newSurnameField.getText(), 
-                                  newEmail1Field.getText(), newEmail2Field.getText(),
-                                  newEmail3Field.getText(), newTelephone1Field.getText(),
-                                  newTelephone2Field.getText(), newTelephone3Field.getText());
+            ///< Aggiunta del contatto appena creato alla lista dei contatti.
+            elencoContatti.aggiungiContatto(c);
         
-        ///< Aggiunta del contatto appena creato alla lista dei contatti.
-        elencoContatti.aggiungiContatto(c);
+            ///< Modifica del file esterno: aggiuta delle informazioni del nuovo contatto.
+            salvaContattiInfoCSV();
         
-        ///< Modifica del file esterno: aggiuta delle informazioni del nuovo contatto.
-        salvaContattiInfoCSV();
-        
-        
-        InitBindings.stage.close();
-        InitBindings.openNewStage(new Scene(App.loadFXML("RubricaView")));
+            ///< chiusura dell'interfaccia corrente "NewContactView" e apertura dell'interfaccia "RubricaView".
+            InitBindings.stage.close();
+            InitBindings.openNewStage(new Scene(App.loadFXML("RubricaView")));
+            
+        }
     } 
     
     /**
@@ -113,7 +126,7 @@ public class NewContactViewController implements Initializable {
             
             ///< Scrittura delle informazioni nel file esterno.
             pw.println("NOME;COGNOME;E-MAIL1;E-MAIL2;E-MAIL3;NUMERO DI TELEFONO1;NUMERO DI TELEFONO2;NUMERO DI TELEFONO3");
-            for(Contatto c : elencoContatti.getElencoTelefonico()){
+            for(Contatto c : elencoContatti.getElencoContatti()){
                 pw.append(c.getNome());
                 pw.append(";");
                 pw.append(c.getCognome());

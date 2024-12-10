@@ -21,7 +21,7 @@
          <children>
             <ImageView fitHeight="178.0" fitWidth="182.0" layoutX="262.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Downloads/ragazzo_nel_chill.jpeg" />
+                  <Image url="@../../../../../../1200px-Google_Contacts_icon.svg-1024x1024.png" />
                </image></ImageView>
             <Label layoutX="423.0" layoutY="302.0" text="E-Mail:">
                <font>

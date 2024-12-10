@@ -7,6 +7,7 @@ package com.mycompany.ingegneriasoftware;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Collection;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -30,7 +31,6 @@ import utenteContatto.ElencoContatti;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
-import javafx.util.Callback;
 import utenteContatto.Contatto;
 
 /**
@@ -39,7 +39,7 @@ import utenteContatto.Contatto;
  * @author 39334
  */
 public class RubricaViewController implements Initializable {
-
+    
     private ElencoContatti elencoContatti;
     
     private ObservableList<Contatto> elencoContattiOsservabile;
@@ -84,8 +84,8 @@ public class RubricaViewController implements Initializable {
         // TODO        
         this.infoPanel.setOpacity(0);
     
-        elencoContattiOsservabile = FXCollections.observableList(elencoContatti.getElencoTelefonico());
-        
+        elencoContattiOsservabile = FXCollections.observableList(elencoContatti.getElencoContatti());
+            
         /* istruzioni per prova della search box */
         
         this.contactColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue()));
