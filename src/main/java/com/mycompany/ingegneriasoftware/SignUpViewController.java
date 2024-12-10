@@ -102,10 +102,9 @@ public class SignUpViewController implements Initializable {
     public static void salvaUserInfoCSV() throws IOException{
         
         ///< Istanziamento di due oggetti "PrintWriter", "BufferedWriter" e "FileWriter" per la scrittura sul file "ElencoUtenti.csv".
-        try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("ElencoUtenti.csv")))){
+        try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("ElencoUtenti.csv" , true)))){
             
             ///< Scrittura delle informazioni nel file esterno.
-            pw.println("NOME;COGNOME;USERNAME;PASSWORD;MNUMERO DI TELEFONO;E-MAIL");
             pw.append(nameField.getText());
             pw.append(";");
             pw.append(surnameField.getText());

@@ -78,13 +78,11 @@ public class LoginViewController implements Initializable {
                 InitBindings.stage.close();
                 InitBindings.openNewStage(new Scene(App.loadFXML("RubricaView")));
             }
-            else{
-                
-                ///< Label di errore che viene mostrata se le credenziali non sono corrette.
-                errorLabel.setTextFill(Color.RED);
-                errorLabel.setText("Le credenziali inserite non sono valide.");
-            }
+            return;
         }
+        ///< Label di errore che viene mostrata se le credenziali non sono corrette.
+        errorLabel.setTextFill(Color.RED);
+        errorLabel.setText("Le credenziali inserite non sono valide.");
     }
 
     @FXML

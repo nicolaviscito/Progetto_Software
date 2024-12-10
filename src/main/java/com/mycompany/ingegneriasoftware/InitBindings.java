@@ -20,8 +20,4 @@ public class InitBindings {
         stage.setScene(scene);
         stage.show();
     }
-
-    static void readUserData(String namefile) {
-        
-    }
 }
