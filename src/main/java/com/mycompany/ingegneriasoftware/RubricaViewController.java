@@ -7,16 +7,8 @@ package com.mycompany.ingegneriasoftware;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Collection;
-import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.beans.Observable;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -81,9 +73,9 @@ public class RubricaViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb){
-        // TODO        
+        //TODO        
         this.infoPanel.setOpacity(0);
-    
+        this.elencoContatti = new ElencoContatti();
         elencoContattiOsservabile = FXCollections.observableList(elencoContatti.getElencoContatti());
             
         /* istruzioni per prova della search box */

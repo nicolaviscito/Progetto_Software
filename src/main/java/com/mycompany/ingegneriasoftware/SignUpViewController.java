@@ -7,7 +7,6 @@ package com.mycompany.ingegneriasoftware;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.EOFException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -21,7 +20,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import utenteContatto.ElencoContatti;
 import utenteContatto.ElencoUtenti;
 import utenteContatto.Utente;
 
@@ -41,19 +39,19 @@ public class SignUpViewController implements Initializable {
     private ElencoUtenti elencoUtenti = new ElencoUtenti();
 
     @FXML
-    private static Button confirmButton;
+    private Button confirmButton;
     @FXML
-    private static TextField nameField;
+    private TextField nameField;
     @FXML
-    private static TextField usernameField;
+    private TextField usernameField;
     @FXML
-    private static TextField surnameField;
+    private TextField surnameField;
     @FXML
-    private static PasswordField passwordField;
+    private PasswordField passwordField;
     @FXML
-    private static TextField phoneField;
+    private TextField phoneField;
     @FXML
-    private static TextField mailField;
+    private TextField mailField;
 
     /**
      * Initializes the controller class.
@@ -78,10 +76,9 @@ public class SignUpViewController implements Initializable {
      */
     @FXML
     private void openMailView(ActionEvent event) throws IOException {
-        
         ///< Salva le informazioni prese dai TextField nell'interfaccia "SignUpView".
         salvaUserInfoCSV();
-        
+
         ///< Chiusura dell'interfaccia "SignUpView" e apertura dell'interfaccia "RubricaView".
         InitBindings.stage.close();
         InitBindings.openNewStage(new Scene(App.loadFXML("RubricaView")));
@@ -99,11 +96,10 @@ public class SignUpViewController implements Initializable {
      * @author Nicola Viscito.
      * @throws IOException 
      */
-    public static void salvaUserInfoCSV() throws IOException{
-        
+    public void salvaUserInfoCSV() throws IOException{
+
         ///< Istanziamento di due oggetti "PrintWriter", "BufferedWriter" e "FileWriter" per la scrittura sul file "ElencoUtenti.csv".
         try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("ElencoUtenti.csv" , true)))){
-            
             ///< Scrittura delle informazioni nel file esterno.
             pw.append(nameField.getText());
             pw.append(";");

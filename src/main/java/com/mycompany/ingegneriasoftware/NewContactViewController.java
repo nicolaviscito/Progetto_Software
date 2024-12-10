@@ -125,7 +125,6 @@ public class NewContactViewController implements Initializable {
         try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("ElencoContatti.csv")))){
             
             ///< Scrittura delle informazioni nel file esterno.
-            pw.println("NOME;COGNOME;E-MAIL1;E-MAIL2;E-MAIL3;NUMERO DI TELEFONO1;NUMERO DI TELEFONO2;NUMERO DI TELEFONO3");
             for(Contatto c : elencoContatti.getElencoContatti()){
                 pw.append(c.getNome());
                 pw.append(";");
