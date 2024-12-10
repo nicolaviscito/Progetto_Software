@@ -18,7 +18,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("LoginView"));
-        SignUpViewController.salvaUserInfoCSV();
+        //SignUpViewController.salvaUserInfoCSV();
         InitBindings.openNewStage(scene);
     }
 
