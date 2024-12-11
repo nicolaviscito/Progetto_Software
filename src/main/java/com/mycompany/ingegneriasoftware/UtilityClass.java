@@ -22,6 +22,7 @@ import utenteContatto.Utente;
  */
 public class UtilityClass {
     public static Stage stage;
+    public static String username;
     
     public static void openNewStage(Scene scene){
         stage = new Stage();
@@ -42,7 +43,7 @@ public class UtilityClass {
      * @throws IOException 
      */
     public static ElencoUtenti leggiUserInfoCSV() throws IOException{
-        
+
         ElencoUtenti eu = new ElencoUtenti();
         
         ///< Istanziamento di due oggetti "Bufferedreader" e "FileReader" per la lettura del file "ElencoUtenti.csv".
@@ -62,28 +63,6 @@ public class UtilityClass {
         }
         return eu;
     }   
-    
-    public static List leggiContactInfoCSV(String filename) throws IOException{
-        
-        ElencoContatti eu = new ElencoContatti();
-        
-        ///< Istanziamento di due oggetti "Bufferedreader" e "FileReader" per la lettura del file "ElencoUtenti.csv".
-        try(BufferedReader br = new BufferedReader(new FileReader(filename + ".csv"))){
-            
-            ///< Controllo per vedere se il file è terminato.
-            if(br.readLine() == null)
-                return (List) eu;
-            
-            ///< Codice per comporre la lista di utenti che sono stati aggiungi nel file esterno "ElencoUtenti.csv".
-            String line;
-            while((line = br.readLine()) != null){
-                String campi[] = line.split(";");
-                Contatto u = new Contatto(campi[0], campi[1], campi[2], campi[3], campi[4], campi[5] , campi[6], campi[7]);
-                eu.aggiungiContatto(u);
-            }
-        }
-        return (List) eu;
-    }
 }
 
 

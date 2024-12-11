@@ -75,6 +75,7 @@ public class LoginViewController implements Initializable {
             if((u.getUsername().equals(usernameField.getText())) && (u.getPassword().equals(passwordField.getText()))){
                 
                 ///< chiusura dell'interfaccia corrente "LoginView" e apertura dell'interfaccia "RubricaView".
+                UtilityClass.username = usernameField.getText();
                 UtilityClass.stage.close();
                 UtilityClass.openNewStage(new Scene(App.loadFXML("RubricaView")));
             }

@@ -4,6 +4,9 @@
  */
 package utenteContatto;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -36,7 +39,7 @@ public class ElencoContatti {
      * @param[in] Il metodo non usa nessun parametro in ingresso.
      * @return Il metodo ritorna la lista di contatti.
      */
-    public List<Contatto> getElencoContatti() {
+    public List<Contatto> getElencoContatti(){
         return this.elencoContatti;
     }
     
