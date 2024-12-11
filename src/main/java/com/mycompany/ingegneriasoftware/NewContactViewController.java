@@ -158,7 +158,6 @@ public class NewContactViewController implements Initializable {
      * @author Nicola Viscito.
      * @throws IOException 
      */
-    
     public static ElencoContatti leggiContattiInfoCSV() throws IOException{
         ElencoContatti ec = new ElencoContatti();
         
