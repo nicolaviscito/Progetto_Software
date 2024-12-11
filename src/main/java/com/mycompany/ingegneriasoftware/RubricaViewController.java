@@ -8,6 +8,8 @@ package com.mycompany.ingegneriasoftware;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
@@ -23,6 +25,8 @@ import utenteContatto.ElencoContatti;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import utenteContatto.Contatto;
 
@@ -59,13 +63,13 @@ public class RubricaViewController implements Initializable {
     @FXML
     private Button modifyButton;
     @FXML
-    private TableColumn<String , String> contactColumn;
+    private TableColumn<Contatto , String> contactColumn;
     @FXML
     private Button newContactButton;
     @FXML
     private Button profileButton;
     @FXML
-    private TableView<String> contactBox;
+    private TableView<Contatto> contactBox;
     @FXML
     private Pane infoPanel;
 
@@ -79,32 +83,42 @@ public class RubricaViewController implements Initializable {
         this.delateButton.setDisable(true);
         this.modifyButton.setDisable(true);
         this.elencoContatti = new ElencoContatti();
-        elencoContattiOsservabile = FXCollections.observableList(elencoContatti.getElencoContatti());
+        
             
         /* istruzioni per prova della search box */
         
-        this.contactColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue()));
-        ObservableList<String> data = FXCollections.observableArrayList();
-        data.add(new Contatto("Nicola" , "Viscito" , "" , "" , "" , "" , "" , "").getNome());
-        data.add(new Contatto("Giuseppe" , "Viscito" , "" , "" , "" , "" , "" , "").getNome());
+        this.contactColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome() + " " + cellData.getValue().getCognome()));
+        ObservableList<Contatto> data = FXCollections.observableArrayList();
         
-        FilteredList<String> filteredData = new FilteredList<>(data, s -> true);
+
+        elencoContattiOsservabile = FXCollections.observableList(elencoContatti.getElencoContatti());
+
+        elencoContattiOsservabile.add(new Contatto("Giuseppe","Messalino","3341589034","","","mess@gmail.com","mess10@gmail.com",""));
+        elencoContattiOsservabile.add(new Contatto("","Messalino","3341589034","","","","mess10@gmail.com",""));
+        elencoContattiOsservabile.add(new Contatto("Paolo","Messalino","","","","mess@gmail.com","mess10@gmail.com",""));
+        elencoContattiOsservabile.add(new Contatto("Nicola","","3341589034","","","mess@gmail.com","mess10@gmail.com",""));
+
+
+
+        for(Contatto c : elencoContattiOsservabile){
+            data.add(c);
+        }
+        
+        FilteredList<Contatto> filteredData = new FilteredList<>(data, s -> true);
         
         this.contactBox.setItems(data);
-        /*this.searchField.textProperty().addListener((Observable , oldValue , newValue) -> {
+        
+        this.searchField.textProperty().addListener((Observable , oldValue , newValue) -> {
             filteredData.setPredicate(item -> {
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
-                return item.toLowerCase().contains(newValue.toLowerCase());                
+                return item.getNome().toLowerCase().contains(newValue.toLowerCase()) || item.getCognome().toLowerCase().contains(newValue.toLowerCase());                
             });
             this.contactBox.setItems(filteredData);
         });
-        */
-        /* ---------------------------------------------------- */
         
-        
-        
+        /* ---------------------------------------------------- */    
     }    
 
     @FXML
@@ -122,8 +136,8 @@ public class RubricaViewController implements Initializable {
 
     @FXML
     private void openNewContactView(ActionEvent event) throws IOException {
-        InitBindings.stage.close();
-        InitBindings.openNewStage(new Scene(App.loadFXML("NewContactView")));
+        UtilityClass.stage.close();
+        UtilityClass.openNewStage(new Scene(App.loadFXML("NewContactView")));
     }
 
     @FXML
@@ -144,5 +158,21 @@ public class RubricaViewController implements Initializable {
         this.infoPanel.setOpacity(1);
         this.delateButton.setDisable(false);
         this.modifyButton.setDisable(false);
+        
+        String selectedContact = contactBox.getSelectionModel().getSelectedItem().getNome();
+        
+        for(Contatto c : elencoContattiOsservabile){
+            if(c.getNome().equals(selectedContact)){
+                nameLabel.setText(c.getNome());
+                surnameLabel.setText(c.getCognome());
+                phoneLabel1.setText(c.getNumTel1());
+                phoneLabel2.setText(c.getNumTel2());
+                phoneLabel3.setText(c.getNumTel3());
+                mailLabel1.setText(c.getEmail1());
+                mailLabel2.setText(c.getEmail2());
+                mailLabel3.setText(c.getEmail3());
+            }
+        }
+        
     }
 }

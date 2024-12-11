@@ -66,7 +66,7 @@ public class LoginViewController implements Initializable {
     private void openMailView(ActionEvent event) throws IOException {
         
         ///< Accesso all'elenco dove sono stati inseriti tutti gli utenti e le informazioni associate.
-        ElencoUtenti elencoUtenti = SignUpViewController.leggiUserInfoCSV();
+        ElencoUtenti elencoUtenti = UtilityClass.leggiUserInfoCSV();
         
         ///< Iterazione per fare il controllo su ognuno degli utenti presenti nell'elenco.
         for(Utente u : elencoUtenti.getListaUtenti()){
@@ -75,20 +75,19 @@ public class LoginViewController implements Initializable {
             if((u.getUsername().equals(usernameField.getText())) && (u.getPassword().equals(passwordField.getText()))){
                 
                 ///< chiusura dell'interfaccia corrente "LoginView" e apertura dell'interfaccia "RubricaView".
-                InitBindings.stage.close();
-                InitBindings.openNewStage(new Scene(App.loadFXML("RubricaView")));
+                UtilityClass.stage.close();
+                UtilityClass.openNewStage(new Scene(App.loadFXML("RubricaView")));
             }
-            return;
+            ///< Label di errore che viene mostrata se le credenziali non sono corrette.
+            errorLabel.setTextFill(Color.RED);
+            errorLabel.setText("Le credenziali inserite non sono valide.");            
         }
-        ///< Label di errore che viene mostrata se le credenziali non sono corrette.
-        errorLabel.setTextFill(Color.RED);
-        errorLabel.setText("Le credenziali inserite non sono valide.");
     }
 
     @FXML
     private void openSignUpView(ActionEvent event) throws IOException {
-        InitBindings.stage.close();
-        InitBindings.openNewStage(new Scene(App.loadFXML("SignUpView")));
+        UtilityClass.stage.close();
+        UtilityClass.openNewStage(new Scene(App.loadFXML("SignUpView")));
     }
     
 }

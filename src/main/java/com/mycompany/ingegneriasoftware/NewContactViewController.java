@@ -101,8 +101,8 @@ public class NewContactViewController implements Initializable {
             salvaContattiInfoCSV();
         
             ///< chiusura dell'interfaccia corrente "NewContactView" e apertura dell'interfaccia "RubricaView".
-            InitBindings.stage.close();
-            InitBindings.openNewStage(new Scene(App.loadFXML("RubricaView")));
+            UtilityClass.stage.close();
+            UtilityClass.openNewStage(new Scene(App.loadFXML("RubricaView")));
             
         }
     } 

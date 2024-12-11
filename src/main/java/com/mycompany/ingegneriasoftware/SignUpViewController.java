@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -57,10 +58,20 @@ public class SignUpViewController implements Initializable {
      * Initializes the controller class.
      * @param url
      * @param rb
+     * 
+     * @author Giuseppe Messalino.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+       confirmButton.disableProperty().bind(
+            Bindings.or(
+                Bindings.and(Bindings.isEmpty(nameField.textProperty()), 
+                            Bindings.isEmpty(surnameField.textProperty())),
+                Bindings.or(Bindings.isEmpty(usernameField.textProperty()), 
+                             Bindings.isEmpty(passwordField.textProperty()))
+            )
+        );
     }    
 
     /**
@@ -80,8 +91,8 @@ public class SignUpViewController implements Initializable {
         salvaUserInfoCSV();
 
         ///< Chiusura dell'interfaccia "SignUpView" e apertura dell'interfaccia "RubricaView".
-        InitBindings.stage.close();
-        InitBindings.openNewStage(new Scene(App.loadFXML("RubricaView")));
+        UtilityClass.stage.close();
+        UtilityClass.openNewStage(new Scene(App.loadFXML("RubricaView")));
     }
     
     /**
@@ -93,7 +104,7 @@ public class SignUpViewController implements Initializable {
      * @param[in] Il metodo non usa nessun parametro in ingresso.
      * @return Nessun valore di ritorno.
      * 
-     * @author Nicola Viscito.
+     * @author Nicola Viscito , Giuseppe Messalino.
      * @throws IOException 
      */
     public void salvaUserInfoCSV() throws IOException{
@@ -101,56 +112,47 @@ public class SignUpViewController implements Initializable {
         ///< Istanziamento di due oggetti "PrintWriter", "BufferedWriter" e "FileWriter" per la scrittura sul file "ElencoUtenti.csv".
         try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("ElencoUtenti.csv" , true)))){
             ///< Scrittura delle informazioni nel file esterno.
-            pw.append(nameField.getText());
-            pw.append(";");
-            pw.append(surnameField.getText());
-            pw.append(";");
-            pw.append(usernameField.getText());
-            pw.append(";");
-            pw.append(passwordField.getText());
-            pw.append(";");
-            pw.append(phoneField.getText());
-            pw.append(";");
-            pw.append(mailField.getText());
-            pw.append('\n');
-        }
-    }
-    
-    /**
-     * @brief Metodo per leggere le informazioni degli utenti in un file esterno.
-     * 
-     * Questo metodo accede al file esterno "ElencoUtenti.csv" dove sono state salvate tutte le informazioni associate ad un utente
-     * attraverso il metodo "salvaUserInfoCSV()".
-     * 
-     * @param[in] Il metodo non usa nessun parametro in ingresso.
-     * @return L'elenco degli utenti registrati.
-     * 
-     * @author Nicola Viscito.
-     * @throws IOException 
-     */
-    
-    public static ElencoUtenti leggiUserInfoCSV() throws IOException{
-        
-        ElencoUtenti eu = new ElencoUtenti();
-        
-        ///< Istanziamento di due oggetti "Bufferedreader" e "FileReader" per la lettura del file "ElencoUtenti.csv".
-        try(BufferedReader br = new BufferedReader(new FileReader("ElencoUtenti.csv"))){
-            
-            ///< Controllo per vedere se il file è terminato.
-            if(br.readLine() == null)
-                return eu;
-            
-            ///< Codice per comporre la lista di utenti che sono stati aggiungi nel file esterno "ElencoUtenti.csv".
-            String line;
-            while((line = br.readLine()) != null){
-                String campi[] = line.split(";");
-                Utente u = new Utente(campi[0], campi[1], campi[2], campi[3], campi[4], campi[5]);
-                eu.aggiungiUtente(u);
+                if(nameField.getText().isEmpty()){
+                    pw.append("");
+                    pw.append(";");
+                }else{
+                    pw.append(nameField.getText());
+                    pw.append(";");
+                }
+                
+                if(surnameField.getText().isEmpty()){
+                    pw.append("");
+                    pw.append(";");
+                }else{
+                    pw.append(surnameField.getText());
+                    pw.append(";");
+                }
+                
+                pw.append(usernameField.getText());
+                pw.append(";");
+                
+                pw.append(passwordField.getText());
+                pw.append(";");
+                
+                if(phoneField.getText().isEmpty()){
+                    pw.append("");
+                    pw.append(";");
+                }else{
+                    pw.append(phoneField.getText());
+                    pw.append(";");
+                }
+                
+                if(mailField.getText().isEmpty()){
+                    pw.append("");
+                    pw.append(";");
+                }else{
+                    pw.append(mailField.getText());
+                    pw.append(";");
+                }               
             }
-        }
-        return eu;
+        try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(usernameField.getText() + ".csv")))){}
     }
-    
+       
     /**
      * @brief Metodo che effettua la registrazione di un nuovo utente.
      * 

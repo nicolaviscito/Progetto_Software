@@ -18,7 +18,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("LoginView"));
-        InitBindings.openNewStage(scene);
+        UtilityClass.openNewStage(scene);
     }
 
     static void setRoot(String fxml) throws IOException {

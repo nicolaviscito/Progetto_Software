@@ -29,6 +29,6 @@
          </font>
       </TextField>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="71.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="errorLabel" layoutX="28.0" layoutY="375.0" prefHeight="21.0" prefWidth="294.0" />
+      <Label fx:id="errorLabel" alignment="CENTER" layoutX="28.0" layoutY="375.0" prefHeight="21.0" prefWidth="294.0" />
    </children>
 </AnchorPane>
