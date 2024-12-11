@@ -144,7 +144,9 @@ public class RubricaViewController implements Initializable {
     }
 
     @FXML
-    private void openProfileView(ActionEvent event) {
+    private void openProfileView(ActionEvent event) throws IOException {
+        UtilityClass.stage.close();
+        UtilityClass.openNewStage(new Scene(App.loadFXML("ProfileView")));
     }
 
     

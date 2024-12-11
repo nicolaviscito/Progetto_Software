@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.ingegneriasoftware.ModifyContactViewController">
+   <children>
+      <Button fx:id="modifyProfileButton" layoutX="425.0" layoutY="349.0" mnemonicParsing="false" onAction="#modifyProfile" prefHeight="30.0" prefWidth="126.0" text="Modifica">
+         <font>
+            <Font name="Cambria Bold" size="15.0" />
+         </font>
+      </Button>
+      <Label alignment="CENTER" layoutX="174.0" layoutY="23.0" text="Modifica Contatto" textAlignment="CENTER">
+         <font>
+            <Font name="Cambria" size="38.0" />
+         </font>
+      </Label>
+      <Label layoutX="319.0" layoutY="215.0" text="Cognome:" textAlignment="CENTER">
+         <font>
+            <Font name="Cambria" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="338.0" layoutY="258.0" text="E-Mail:" textAlignment="CENTER">
+         <font>
+            <Font name="Cambria" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="318.0" layoutY="301.0" text="Password:" textAlignment="CENTER">
+         <font>
+            <Font name="Cambria" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="newSurnameField" layoutX="390.0" layoutY="209.0" />
+      <TextField fx:id="newEmailField" layoutX="390.0" layoutY="252.0" />
+      <TextField fx:id="newPasswordField" layoutX="390.0" layoutY="294.0" />
+      <TextField fx:id="newUsernameField" layoutX="105.0" layoutY="295.0" />
+      <TextField fx:id="newTelephoneField" layoutX="105.0" layoutY="253.0" />
+      <TextField fx:id="newNameField" layoutX="105.0" layoutY="210.0" />
+      <Label layoutX="32.0" layoutY="301.0" prefHeight="21.0" prefWidth="77.0" text="Username:" textAlignment="CENTER">
+         <font>
+            <Font name="Cambria" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="38.0" layoutY="258.0" prefHeight="20.0" prefWidth="64.0" text="Telefono: " textAlignment="CENTER">
+         <font>
+            <Font name="Cambria" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="55.0" layoutY="215.0" text="Nome:" textAlignment="CENTER">
+         <font>
+            <Font name="Cambria" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="119.0" fitWidth="156.0" layoutX="260.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../1200px-Google_Contacts_icon.svg-1024x1024.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
