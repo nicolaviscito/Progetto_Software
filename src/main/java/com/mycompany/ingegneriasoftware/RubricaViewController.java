@@ -6,16 +6,11 @@
 package com.mycompany.ingegneriasoftware;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
@@ -40,10 +35,8 @@ import utenteContatto.Contatto;
  * @author 39334
  */
 public class RubricaViewController implements Initializable {
-    
-    private ElencoContatti elencoContatti;
-    
     private ObservableList<Contatto> elencoContattiOsservabile;
+    
     @FXML
     private TextField searchField;
     @FXML
@@ -82,23 +75,22 @@ public class RubricaViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb){        
-        //TODO                
+
         this.infoPanel.setOpacity(0);
         this.delateButton.setDisable(true);
         this.modifyButton.setDisable(true);
-        this.elencoContatti = new ElencoContatti();
 
         this.contactColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome() + " " + cellData.getValue().getCognome()));
         ObservableList<Contatto> data = FXCollections.observableArrayList();
         
-        elencoContattiOsservabile = FXCollections.observableList(elencoContatti.getElencoContatti());
+        elencoContattiOsservabile = FXCollections.observableList(new ElencoContatti().getElencoContatti());
         
         /*da riscrivere questa funzione di lettura perche non legge tutto il file ma soltanto la prima riga*/
         try(BufferedReader br = new BufferedReader(new FileReader(UtilityClass.username + ".csv"))){
             String line;
             while((line = br.readLine()) != null){
                 String campi[] = line.split(";");
-                Contatto u = new Contatto(campi[0], campi[1], campi[2], campi[3], campi[4], campi[5] , campi[6], campi[7]);
+                Contatto u = new Contatto(campi[0], campi[1], campi[5], campi[6], campi[7], campi[2] , campi[3], campi[4]);
                 this.elencoContattiOsservabile.add(u);
             }
         } catch (FileNotFoundException ex) {
@@ -144,7 +136,9 @@ public class RubricaViewController implements Initializable {
     }
 
     @FXML
-    private void openProfileView(ActionEvent event) {
+    private void openProfileView(ActionEvent event) throws IOException {
+        UtilityClass.stage.close();
+        UtilityClass.openNewStage(new Scene(App.loadFXML("ProfileView")));
     }
 
     
@@ -167,14 +161,37 @@ public class RubricaViewController implements Initializable {
         
             for(Contatto c : elencoContattiOsservabile){
                 if(c.getNome().equals(selectedContact)){
-                    nameLabel.setText(c.getNome());
-                    surnameLabel.setText(c.getCognome());
-                    phoneLabel1.setText(c.getNumTel1());
-                    phoneLabel2.setText(c.getNumTel2());
-                    phoneLabel3.setText(c.getNumTel3());
-                    mailLabel1.setText(c.getEmail1());
-                    mailLabel2.setText(c.getEmail2());
-                    mailLabel3.setText(c.getEmail3());
+                    if(c.getNome().equals("null"))
+                        nameLabel.setText("");
+                    else nameLabel.setText(c.getNome());
+                    
+                    if(c.getCognome().equals("null"))
+                        surnameLabel.setText("");
+                    else surnameLabel.setText(c.getCognome());
+                    
+                    if(c.getNumTel1().equals("null"))
+                        phoneLabel1.setText("");
+                    else phoneLabel1.setText(c.getNumTel1());
+                    
+                    if(c.getNumTel2().equals("null"))
+                        phoneLabel2.setText("");
+                    else phoneLabel2.setText(c.getNumTel2());
+                    
+                    if(c.getNumTel3().equals("null"))
+                        phoneLabel3.setText("");
+                    else phoneLabel3.setText(c.getNumTel3());                                                                                                                              
+                    
+                    if(c.getEmail1().equals("null"))
+                        mailLabel1.setText("");
+                    else mailLabel1.setText(c.getEmail1());
+                    
+                    if(c.getEmail2().equals("null"))
+                        mailLabel2.setText("");
+                    else mailLabel2.setText(c.getEmail2());
+                    
+                    if(c.getEmail3().equals("null"))
+                        mailLabel3.setText("");
+                    else mailLabel3.setText(c.getEmail3());                    
                 }
             }             
         }
