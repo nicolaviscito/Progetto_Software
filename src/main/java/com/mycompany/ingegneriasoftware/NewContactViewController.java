@@ -91,35 +91,16 @@ public class NewContactViewController implements Initializable {
         else{
             
             ///< Creazione del nuovo contatto, a cui passiamo i parametri presi dai TextFields dell'interfaccia di creazione contatto "NewContactView".
-            Contatto c = new Contatto(newNameField.getText(), newSurnameField.getText(), 
-                                    newEmail1Field.getText(), newEmail2Field.getText(),
-                                    newEmail3Field.getText(), newTelephone1Field.getText(),
-                                    newTelephone2Field.getText(), newTelephone3Field.getText());
-        
-            if(newNameField.getText().isEmpty()){
-                c.setNome("");
-            }
-            if(newSurnameField.getText().isEmpty()){
-                c.setNome("");
-            }
-            if(newEmail1Field.getText().isEmpty()){
-                c.setEmail1("");
-            }
-            if(newEmail2Field.getText().isEmpty()){
-                c.setEmail2("");
-            }
-            if(newEmail3Field.getText().isEmpty()){
-                c.setEmail3("");
-            }
-            if(newTelephone1Field.getText().isEmpty()){
-                c.setNumTel1("");
-            }
-            if(newTelephone2Field.getText().isEmpty()){
-                c.setNumTel2("");
-            }
-            if(newTelephone3Field.getText().isEmpty()){
-                c.setNumTel3("");
-            }
+            Contatto c = new Contatto(
+                                    newNameField.getText().isEmpty() ? "" : newNameField.getText(),
+                                    newSurnameField.getText().isEmpty() ? "" : newSurnameField.getText(),
+                                    newEmail1Field.getText().isEmpty() ? "" : newEmail1Field.getText(),
+                                    newEmail2Field.getText().isEmpty() ? "" : newEmail2Field.getText(),
+                                    newEmail3Field.getText().isEmpty() ? "" : newEmail3Field.getText(),
+                                    newTelephone1Field.getText().isEmpty() ? "" : newTelephone1Field.getText(),
+                                    newTelephone2Field.getText().isEmpty() ? "" : newTelephone2Field.getText(),
+                                    newTelephone3Field.getText().isEmpty() ? "" : newTelephone3Field.getText()
+            );
             
             ///< Aggiunta del contatto appena creato alla lista dei contatti.
             elencoContatti.aggiungiContatto(c);
