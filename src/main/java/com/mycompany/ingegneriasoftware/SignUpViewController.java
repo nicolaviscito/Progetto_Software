@@ -19,8 +19,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import utenteContatto.ElencoUtenti;
 import utenteContatto.Utente;
 
@@ -53,6 +55,8 @@ public class SignUpViewController implements Initializable {
     private TextField phoneField;
     @FXML
     private TextField mailField;
+    @FXML
+    private Label errorLabel;
 
     /**
      * Initializes the controller class.
@@ -88,7 +92,7 @@ public class SignUpViewController implements Initializable {
     @FXML
     private void openMailView(ActionEvent event) throws IOException {
         ///< Salva le informazioni prese dai TextField nell'interfaccia "SignUpView".
-        salvaUserInfoCSV();
+        RegistraUtente();
 
         ///< Chiusura dell'interfaccia "SignUpView" e apertura dell'interfaccia "RubricaView".
         UtilityClass.stage.close();
@@ -172,8 +176,16 @@ public class SignUpViewController implements Initializable {
         ///< Creazione del nuovo utente, a cui passiamo i parametri presi dai TextFields dell'interfaccia di registrazione utente "SignUpView".
         Utente u = new  Utente(nameField.getText(), surnameField.getText(), usernameField.getText(), passwordField.getText(), mailField.getText(), phoneField.getText());
         
-        ///< Aggiunta dell'utente appena creato alla lista degli utenti.
-        elencoUtenti.aggiungiUtente(u);
+        for(Utente ut : UtilityClass.leggiUserInfoCSV().getListaUtenti()){
+            if(u.getUsername().equals(usernameField.getText())){
+                errorLabel.setTextFill(Color.RED);
+                errorLabel.setText("L'username inserito è già in uso.");
+            }
+             else{
+                ///< Aggiunta dell'utente appena creato alla lista degli utenti.
+                elencoUtenti.aggiungiUtente(u);
+            }
+        }
         
         ///< Modifica del file esterno: aggiuta delle informazioni del nuovo utente.
         salvaUserInfoCSV();

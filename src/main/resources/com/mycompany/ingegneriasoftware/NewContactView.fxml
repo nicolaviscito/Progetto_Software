@@ -6,7 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.ingegneriasoftware.NewContactViewController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" fx:controller="com.mycompany.ingegneriasoftware.NewContactViewController">
    <children>
       <ImageView fitHeight="119.0" fitWidth="156.0" layoutX="250.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="68.0">
          <image>
@@ -72,5 +72,10 @@
          </font>
       </Button>
       <Label fx:id="errorLabel" alignment="CENTER" layoutX="165.0" layoutY="369.0" prefHeight="21.0" prefWidth="286.0" textAlignment="CENTER" />
+      <Button fx:id="BackButton" layoutX="14.0" layoutY="31.0" mnemonicParsing="false" onAction="#goBack" prefHeight="31.0" prefWidth="42.0" text="&lt;--" textAlignment="CENTER">
+         <font>
+            <Font name="Cambria Bold" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

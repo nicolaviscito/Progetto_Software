@@ -73,12 +73,17 @@
             <Font name="Cambria" size="15.0" />
          </font>
       </Label>
-      <Button fx:id="modifyProfileButton" layoutX="77.0" layoutY="341.0" mnemonicParsing="false" onAction="#modifyProfile" prefHeight="31.0" prefWidth="174.0" text="Modifica Profilo" AnchorPane.leftAnchor="77.0">
+      <Button fx:id="modifyProfileButton" layoutX="32.0" layoutY="341.0" mnemonicParsing="false" onAction="#modifyProfile" prefHeight="31.0" prefWidth="174.0" text="Modifica Profilo" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="394.0">
          <font>
             <Font name="Cambria Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="deleteProfileButton" layoutX="382.0" layoutY="341.0" mnemonicParsing="false" onAction="#deleteProfile" prefHeight="31.0" prefWidth="174.0" text="Elimina Profilo" AnchorPane.rightAnchor="77.0">
+      <Button fx:id="deleteProfileButton" layoutX="218.0" layoutY="341.0" mnemonicParsing="false" onAction="#deleteProfile" prefHeight="31.0" prefWidth="174.0" text="Elimina Profilo" AnchorPane.rightAnchor="208.0">
+         <font>
+            <Font name="Cambria Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="BackButton" layoutX="406.0" layoutY="341.0" mnemonicParsing="false" onAction="#goBack" prefHeight="31.0" prefWidth="174.0" text="Torna alla Rubrica" textAlignment="CENTER" AnchorPane.rightAnchor="20.0">
          <font>
             <Font name="Cambria Bold" size="15.0" />
          </font>

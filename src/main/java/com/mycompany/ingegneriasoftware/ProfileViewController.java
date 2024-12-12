@@ -46,6 +46,8 @@ public class ProfileViewController implements Initializable {
     private Button modifyProfileButton;
     @FXML
     private Button deleteProfileButton;
+    @FXML
+    private Button BackButton;
 
     /**
      * Initializes the controller class.
@@ -80,5 +82,11 @@ public class ProfileViewController implements Initializable {
     @FXML
     private void deleteProfile(ActionEvent event) {
         
+    }
+
+    @FXML
+    private void goBack(ActionEvent event) throws IOException {
+        UtilityClass.stage.close();
+        UtilityClass.openNewStage(new Scene(App.loadFXML("RubricaView")));
     }
 }

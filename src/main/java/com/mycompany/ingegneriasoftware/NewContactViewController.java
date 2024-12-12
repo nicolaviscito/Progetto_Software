@@ -57,6 +57,8 @@ public class NewContactViewController implements Initializable {
     private Button createContactButton;
     @FXML
     private Label errorLabel;
+    @FXML
+    private Button BackButton;
 
     /**
      * Initializes the controller class.
@@ -94,6 +96,31 @@ public class NewContactViewController implements Initializable {
                                     newEmail3Field.getText(), newTelephone1Field.getText(),
                                     newTelephone2Field.getText(), newTelephone3Field.getText());
         
+            if(newNameField.getText().isEmpty()){
+                c.setNome("");
+            }
+            if(newSurnameField.getText().isEmpty()){
+                c.setNome("");
+            }
+            if(newEmail1Field.getText().isEmpty()){
+                c.setEmail1("");
+            }
+            if(newEmail2Field.getText().isEmpty()){
+                c.setEmail2("");
+            }
+            if(newEmail3Field.getText().isEmpty()){
+                c.setEmail3("");
+            }
+            if(newTelephone1Field.getText().isEmpty()){
+                c.setNumTel1("");
+            }
+            if(newTelephone2Field.getText().isEmpty()){
+                c.setNumTel2("");
+            }
+            if(newTelephone3Field.getText().isEmpty()){
+                c.setNumTel3("");
+            }
+            
             ///< Aggiunta del contatto appena creato alla lista dei contatti.
             elencoContatti.aggiungiContatto(c);
         
@@ -122,7 +149,7 @@ public class NewContactViewController implements Initializable {
     public void salvaContattiInfoCSV() throws IOException{
         
         ///< Istanziamento di due oggetti "PrintWriter", "BufferedWriter" e "FileWriter" per la scrittura sul file "ElencoContatti.csv".
-        try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("ElencoContatti.csv")))){
+        try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(UtilityClass.username + ".csv")))){
             
             ///< Scrittura delle informazioni nel file esterno.
             for(Contatto c : elencoContatti.getElencoContatti()){
@@ -177,6 +204,12 @@ public class NewContactViewController implements Initializable {
             }
         }
         return ec;
+    }
+
+    @FXML
+    private void goBack(ActionEvent event) throws IOException {
+        UtilityClass.stage.close();
+        UtilityClass.openNewStage(new Scene(App.loadFXML("RubricaView")));
     }
 }
 
