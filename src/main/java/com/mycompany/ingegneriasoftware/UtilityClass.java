@@ -53,20 +53,26 @@ public class UtilityClass {
     public static void leggiUserInfoCSV() throws IOException{
         
         ///< Istanziamento di due oggetti "Bufferedreader" e "FileReader" per la lettura del file "ElencoUtenti.csv".
-        try(BufferedReader br = new BufferedReader(new FileReader("ElencoUtenti.csv"))){
-            
-            ///< Controllo per vedere se il file è terminato.
-            if(br.readLine() == null)
-                elencoUtenti = null;
-            
-            ///< Codice per comporre la lista di utenti che sono stati aggiungi nel file esterno "ElencoUtenti.csv".
-            String line;
-            while((line = br.readLine()) != null){
-                String campi[] = line.split(";");
-                Utente u = new Utente(campi[0], campi[1], campi[2], campi[3], campi[4], campi[5]);
-                elencoUtenti.aggiungiUtente(u);
+        try(BufferedReader reader = new BufferedReader(new FileReader("ElencoUtenti.csv"))){
+            String line = reader.readLine();
+            ///< Controllo per vedere se il file è vuoto.
+            if(line == null){
+                UtilityClass.elencoUtenti.aggiungiUtente(null);
+                return;
             }
-        }
+            
+            do{
+                String[] row = line.split(";");
+                String name = (row.length > 0 && !row[0].isEmpty()) ? row[0] : "";
+                String surname = (row.length > 1 && !row[1].isEmpty()) ? row[1] : "";
+                String username = (row.length > 2 && !row[2].isEmpty()) ? row[2] : "";
+                String password = (row.length > 3 && !row[3].isEmpty()) ? row[3] : "";
+                String phone = (row.length > 4 && !row[4].isEmpty()) ? row[4] : "";
+                String mail = (row.length > 5 && !row[5].isEmpty()) ? row[5] : "";
+                Utente u = new Utente(name , surname , username , password , mail , phone);
+                UtilityClass.elencoUtenti.aggiungiUtente(u);
+            }while((line = reader.readLine()) != null);   
+        }    
     }   
     
         /**
@@ -83,23 +89,21 @@ public class UtilityClass {
      */
     public static void salvaUserInfoCSV(Utente u) throws IOException{
         UtilityClass.username = u.getUsername();
-        ///< Istanziamento di due oggetti "PrintWriter", "BufferedWriter" e "FileWriter" per la scrittura sul file "ElencoUtenti.csv".
-        try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("ElencoUtenti.csv")))){
-            ///< Scrittura delle informazioni nel file esterno.
-                pw.append(u.getName());
-                pw.append(";");
-                pw.append(u.getSurname());
-                pw.append(";");
-                pw.append(u.getUsername());
-                pw.append(";");
-                pw.append(u.getPassword());
-                pw.append(";");
-                pw.append(u.getNumtel());
-                pw.append(";");
-                pw.append(u.getEmail());
-                pw.append(";");
-                pw.append("\n");
-            }
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter("ElencoUtenti.csv" , true))){
+            writer.write(u.getName());
+            writer.write(";");
+            writer.write(u.getSurname());
+            writer.write(";");
+            writer.write(u.getUsername());
+            writer.write(";");
+            writer.write(u.getPassword());
+            writer.write(";");
+            writer.write(u.getNumtel());
+            writer.write(";");
+            writer.write(u.getEmail());
+            writer.write(";");
+            writer.newLine();
+        }
         try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(u.getUsername() + ".csv")))){}
     }
     
@@ -116,82 +120,25 @@ public class UtilityClass {
      * @throws IOException 
      */
     public static void salvaContattoInfoCSV(Contatto c) throws IOException{
-        ///< Istanziamento di due oggetti "PrintWriter", "BufferedWriter" e "FileWriter" per la scrittura sul file "ElencoContatti.csv".
-        try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(UtilityClass.username + ".csv", true)))){
-            ///< Scrittura delle informazioni nel file esterno.
-                    if(c.getNome().equals("")){
-                        pw.append("null");
-                        pw.append(";");
-                    }
-                    else{
-                        pw.append(c.getNome());
-                        pw.append(";");
-                    }
-
-                    if(c.getCognome().equals("")){
-                        pw.append("null");
-                        pw.append(";");
-                    }
-                    else{
-                        pw.append(c.getCognome());
-                        pw.append(";");
-                    }
-                    
-                    if(c.getEmail1().equals("")){
-                        pw.append("null");
-                        pw.append(";");
-                    }
-                    else {
-                        pw.append(c.getEmail1());
-                        pw.append(";");
-                    }
-                    
-                    if(c.getEmail2().equals("")){
-                        pw.append("null");
-                        pw.append(";");
-                    }   
-                    else {
-                        pw.append(c.getEmail2());
-                        pw.append(";");
-                    }
-                    
-                    if(c.getEmail3().equals("")){
-                        pw.append("null");
-                        pw.append(";");
-                    }   
-                    else {
-                        pw.append(c.getEmail3());
-                        pw.append(";");
-                    }                                                                                                                              
-                    
-                    if(c.getNumTel1().equals("")){
-                        pw.append("null");
-                        pw.append(";");
-                    } 
-                    else{
-                        pw.append(c.getNumTel1());
-                        pw.append(";");
-                    }
-                    
-                    if(c.getNumTel2().equals("")){
-                        pw.append("null");
-                        pw.append(";");
-                    }   
-                    else {
-                        pw.append(c.getNumTel2());
-                        pw.append(";");
-                    }
-                    
-                    if(c.getNumTel3().equals("")){
-                        pw.append("null");
-                        pw.append(";");
-                    }   
-                    else{
-                        pw.append(c.getNumTel3());
-                        pw.append(";");
-                    } 
-                    pw.append('\n');
-        }
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter(UtilityClass.username + ".csv" , true))){
+            writer.write(c.getNome());
+            writer.write(";");
+            writer.write(c.getCognome());
+            writer.write(";");
+            writer.write(c.getNumTel1());
+            writer.write(";");
+            writer.write(c.getNumTel2());
+            writer.write(";");
+            writer.write(c.getNumTel3());
+            writer.write(";");
+            writer.write(c.getEmail1());
+            writer.write(";");
+            writer.write(c.getEmail2());
+            writer.write(";");
+            writer.write(c.getEmail3());
+            writer.write(";");
+            writer.newLine();
+        }        
     }
     
     /**
@@ -207,23 +154,27 @@ public class UtilityClass {
      * @throws IOException 
      */
     public static ElencoContatti leggiContattiInfoCSV() throws IOException{
-        ElencoContatti ec = new ElencoContatti();
+        ElencoContatti e = new ElencoContatti();
         
-        ///< Istanziamento di due oggetti "Bufferedreader" e "FileReader" per la lettura del file "ElencoUtenti.csv".
-        try(BufferedReader br = new BufferedReader(new FileReader(UtilityClass.username + ".csv"))){
+        try(BufferedReader reader = new BufferedReader(new FileReader(UtilityClass.username + ".csv"))){
+            String line = reader.readLine();
+            if(line == null)
+                return e;
             
-            ///< Controllo per vedere se il file è terminato.
-            if(br.readLine() == null)
-                return ec;
-            
-            ///< Codice per comporre la lista di utenti che sono stati aggiungi nel file esterno "ElencoUtenti.csv".
-            String line;
-            while((line = br.readLine()) != null){
-                String campi[] = line.split(";");
-                Contatto c = new Contatto(campi[0], campi[1], campi[2], campi[3], campi[4], campi[5], campi[6], campi[7]);
-                ec.aggiungiContatto(c);
-            }
+            do{
+                String[] row = line.split(";");
+                String name = (row.length > 0 && !row[0].isEmpty()) ? row[0] : "";
+                String surname = (row.length > 1 && !row[1].isEmpty()) ? row[1] : "";
+                String phone1 = (row.length > 2 && !row[2].isEmpty()) ? row[2] : "";
+                String phone2 = (row.length > 3 && !row[3].isEmpty()) ? row[3] : "";
+                String phone3 = (row.length > 4 && !row[4].isEmpty()) ? row[4] : "";
+                String mail1 = (row.length > 5 && !row[5].isEmpty()) ? row[5] : "";
+                String mail2 = (row.length > 6 && !row[6].isEmpty()) ? row[6] : "";
+                String mail3 = (row.length > 7 && !row[7].isEmpty()) ? row[7] : "";
+                Contatto c = new Contatto(name , surname , mail1 , mail2 , mail3 , phone1 , phone2 , phone3);
+                e.aggiungiContatto(c);
+            }while((line = reader.readLine()) != null);
         }
-        return ec;
+        return e;
     }
 }

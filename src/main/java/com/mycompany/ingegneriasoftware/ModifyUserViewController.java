@@ -4,7 +4,9 @@
  */
 package com.mycompany.ingegneriasoftware;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,11 +14,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import utenteContatto.Utente;
 
@@ -56,6 +56,7 @@ public class ModifyUserViewController implements Initializable {
     @FXML
     private void modifyProfile(ActionEvent event) throws IOException {
         boolean modificaEffettuata = false;
+        Utente utente = null;
         for(Utente u : UtilityClass.elencoUtenti.getListaUtenti()){
             if(u.getUsername().equals(UtilityClass.username)){
                 if(!newNameField.getText().isEmpty()){
@@ -82,23 +83,19 @@ public class ModifyUserViewController implements Initializable {
                     u.setPassword(newPasswordField.getText());
                     modificaEffettuata = true;
                 }
+                utente = u ;
                 break;
             }
         }
         
         if(modificaEffettuata){
-        // Riscrivi il file CSV con tutti gli utenti aggiornati
-            try (PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(UtilityClass.username + ".csv")))) {
-                for (Utente utente : UtilityClass.elencoUtenti.getListaUtenti()) {
-                    pw.append(utente.getName().isEmpty() ? "null" : utente.getName()).append(";");
-                    pw.append(utente.getSurname().isEmpty() ? "null" : utente.getSurname()).append(";");
-                    pw.append(utente.getEmail().isEmpty() ? "null" : utente.getEmail()).append(";");
-                    pw.append(utente.getNumtel().isEmpty() ? "null" : utente.getNumtel()).append(";");
-                    pw.append(utente.getUsername().isEmpty() ? "null" : utente.getUsername()).append(";");
-                    pw.append(utente.getPassword().isEmpty() ? "null" : utente.getPassword()).append(";");
-                    pw.append('\n');
-                }
-            }
+            // Riscrivi il file CSV con tutti gli utenti aggiornati
+            try(BufferedReader reader = new BufferedReader(new FileReader("ElencoUtenti.csv"))){
+                String line = reader.readLine();
+            
+            do{ 
+            }while((line = reader.readLine()) != null);   
+        }             
         }
        
        UtilityClass.stage.close();

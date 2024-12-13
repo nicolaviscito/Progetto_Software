@@ -10,6 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
@@ -85,11 +86,13 @@ public class SignUpViewController implements Initializable {
     @FXML
     private void openMailView(ActionEvent event) throws IOException {
         ///< Salva le informazioni prese dai TextField nell'interfaccia "SignUpView".
-        RegistraUtente();
+        if(RegistraUtente()){
+            ///< Chiusura dell'interfaccia "SignUpView" e apertura dell'interfaccia "RubricaView".
+            UtilityClass.stage.close();
+            UtilityClass.openNewStage(new Scene(App.loadFXML("RubricaView")));            
+        }
 
-        ///< Chiusura dell'interfaccia "SignUpView" e apertura dell'interfaccia "RubricaView".
-        UtilityClass.stage.close();
-        UtilityClass.openNewStage(new Scene(App.loadFXML("RubricaView")));
+
     }
        
     /**
@@ -105,42 +108,30 @@ public class SignUpViewController implements Initializable {
      * @throws IOException 
      */
     
-    public void RegistraUtente() throws IOException{
-        String name;
-        String surname;
-        String phone;
-        String mail;
-        
-        if(nameField.getText().isEmpty())
-            name = "null";
-        else name = nameField.getText();
-        
-        if(surnameField.getText().isEmpty())
-            surname = "null";
-        else surname = surnameField.getText();
-        
-        if(phoneField.getText().isEmpty())
-            phone = "null";
-        else phone = phoneField.getText(); 
-        
-        if(mailField.getText().isEmpty())
-            mail = "null";
-        else mail = mailField.getText();
-///< Creazione del nuovo utente, a cui passiamo i parametri presi dai TextFields dell'interfaccia di registrazione utente "SignUpView".
-        Utente u = new  Utente(name, surname, usernameField.getText(), passwordField.getText(), mail, phone);
-        
-        for(Utente ut : UtilityClass.elencoUtenti.getListaUtenti()){
-            if(u.getUsername().equals(usernameField.getText())){
+    public boolean RegistraUtente() throws IOException{
+        /*for(Utente ut : UtilityClass.elencoUtenti.getListaUtenti()){
+            if(ut.getUsername().equals(usernameField.getText())){
                 errorLabel.setTextFill(Color.RED);
                 errorLabel.setText("L'username inserito è già in uso.");
+                return false;
             }
-             else{
+             else{*/
+                ///< Creazione del nuovo utente, a cui passiamo i parametri presi dai TextFields dell'interfaccia di registrazione utente "SignUpView".
+                Utente u = new  Utente(nameField.getText(), 
+                                surnameField.getText(), 
+                                usernameField.getText(), 
+                                passwordField.getText(), 
+                                mailField.getText(), 
+                                phoneField.getText());
                 ///< Aggiunta dell'utente appena creato alla lista degli utenti.
                 UtilityClass.elencoUtenti.aggiungiUtente(u);
-            }
-        }
+                ///< Modifica del file esterno: aggiuta delle informazioni del nuovo utente.
+                UtilityClass.salvaUserInfoCSV(u);
+                return true;
+        //    }
+       // }
         
-        ///< Modifica del file esterno: aggiuta delle informazioni del nuovo utente.
-        UtilityClass.salvaUserInfoCSV(u);
+
+
     }
 }

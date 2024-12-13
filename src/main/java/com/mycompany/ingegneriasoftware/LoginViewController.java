@@ -67,22 +67,26 @@ public class LoginViewController implements Initializable {
     private void openMailView(ActionEvent event) throws IOException {
         
         ///< Accesso all'elenco dove sono stati inseriti tutti gli utenti e le informazioni associate.
-        
-        ///< Iterazione per fare il controllo su ognuno degli utenti presenti nell'elenco.
-        for(Utente u : UtilityClass.elencoUtenti.getListaUtenti()){
-            
-            ///< Controllo per verificare se "Username" e "Password" sono corretti.
-            if((u.getUsername().equals(usernameField.getText())) && (u.getPassword().equals(passwordField.getText()))){
-                
-                ///< chiusura dell'interfaccia corrente "LoginView" e apertura dell'interfaccia "RubricaView".
-                UtilityClass.username = usernameField.getText();
-                UtilityClass.elencoContatti = UtilityClass.leggiContattiInfoCSV();
-                UtilityClass.stage.close();
-                UtilityClass.openNewStage(new Scene(App.loadFXML("RubricaView")));
-            }
-            ///< Label di errore che viene mostrata se le credenziali non sono corrette.
+        if(UtilityClass.elencoContatti == null){
             errorLabel.setTextFill(Color.RED);
-            errorLabel.setText("Le credenziali inserite non sono valide.");            
+            errorLabel.setText("Le credenziali inserite non sono valide.");     
+        }else{
+            ///< Iterazione per fare il controllo su ognuno degli utenti presenti nell'elenco.
+            for(Utente u : UtilityClass.elencoUtenti.getListaUtenti()){
+            
+                ///< Controllo per verificare se "Username" e "Password" sono corretti.
+                if((u.getUsername().equals(usernameField.getText())) && (u.getPassword().equals(passwordField.getText()))){
+                
+                    ///< chiusura dell'interfaccia corrente "LoginView" e apertura dell'interfaccia "RubricaView".
+                    UtilityClass.username = usernameField.getText();
+                    UtilityClass.elencoContatti = UtilityClass.leggiContattiInfoCSV();
+                    UtilityClass.stage.close();
+                    UtilityClass.openNewStage(new Scene(App.loadFXML("RubricaView")));
+                }
+                ///< Label di errore che viene mostrata se le credenziali non sono corrette.
+                errorLabel.setTextFill(Color.RED);
+                errorLabel.setText("Le credenziali inserite non sono valide.");            
+            }            
         }
     }
 

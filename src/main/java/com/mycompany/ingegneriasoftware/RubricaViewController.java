@@ -5,18 +5,14 @@
  */
 package com.mycompany.ingegneriasoftware;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
@@ -28,7 +24,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import utenteContatto.ElencoContatti;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
@@ -99,21 +94,9 @@ public class RubricaViewController implements Initializable {
             data.add(c);
         }
         
-        /*da riscrivere questa funzione di lettura perche non legge tutto il file ma soltanto la prima riga
-        try(BufferedReader br = new BufferedReader(new FileReader(UtilityClass.username + ".csv"))){
-            String line;
-            while((line = br.readLine()) != null){
-                String campi[] = line.split(";");
-                Contatto u = new Contatto(campi[0], campi[1], campi[5], campi[6], campi[7], campi[2] , campi[3], campi[4]);
-                this.elencoContattiOsservabile.add(u);
-            }
-        } catch (FileNotFoundException ex) {
-        } catch (IOException ex) {
-        }
-        /*-----------------------------------------------------------------------------------------------------
-        for(Contatto c : elencoContattiOsservabile){
-            data.add(c);
-        }*/
+        data.sort(Comparator.comparing(Contatto :: getCognome).thenComparing(Contatto :: getNome));
+        
+    
         
         FilteredList<Contatto> filteredData = new FilteredList<>(data, s -> true);
         
