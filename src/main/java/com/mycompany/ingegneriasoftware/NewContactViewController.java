@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -65,7 +67,9 @@ public class NewContactViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        try {
+            elencoContatti = leggiContattiInfoCSV();
+        } catch (IOException ex) {}
     }    
 
     /**
@@ -134,22 +138,37 @@ public class NewContactViewController implements Initializable {
             
             ///< Scrittura delle informazioni nel file esterno.
             for(Contatto c : elencoContatti.getElencoContatti()){
-                pw.append(c.getNome());
-                pw.append(";");
-                pw.append(c.getCognome());
-                pw.append(";");
-                pw.append(c.getEmail1());
-                pw.append(";");
-                pw.append(c.getEmail2());
-                pw.append(";");
-                pw.append(c.getEmail3());
-                pw.append(";");
-                pw.append(c.getNumTel1());
-                pw.append(";");
-                pw.append(c.getNumTel2());
-                pw.append(";");
-                pw.append(c.getNumTel3());
-                pw.append('\n');
+                    if(c.getNome().equals("null"))
+                        newNameField.setText("");
+                    else newNameField.setText(c.getNome());
+                    
+                    if(c.getCognome().equals("null"))
+                        newSurnameField.setText("");
+                    else newSurnameField.setText(c.getCognome());
+                    
+                    if(c.getNumTel1().equals("null"))
+                        newEmail1Field.setText("");
+                    else newEmail1Field.setText(c.getNumTel1());
+                    
+                    if(c.getNumTel2().equals("null"))
+                        newEmail2Field.setText("");
+                    else newEmail2Field.setText(c.getNumTel2());
+                    
+                    if(c.getNumTel3().equals("null"))
+                        newEmail3Field.setText("");
+                    else newEmail3Field.setText(c.getNumTel3());                                                                                                                              
+                    
+                    if(c.getEmail1().equals("null"))
+                        newTelephone1Field.setText("");
+                    else newTelephone1Field.setText(c.getEmail1());
+                    
+                    if(c.getEmail2().equals("null"))
+                        newTelephone2Field.setText("");
+                    else newTelephone2Field.setText(c.getEmail2());
+                    
+                    if(c.getEmail3().equals("null"))
+                        newTelephone3Field.setText("");
+                    else newTelephone3Field.setText(c.getEmail3());                    
             }
         }
     }
@@ -170,7 +189,7 @@ public class NewContactViewController implements Initializable {
         ElencoContatti ec = new ElencoContatti();
         
         ///< Istanziamento di due oggetti "Bufferedreader" e "FileReader" per la lettura del file "ElencoUtenti.csv".
-        try(BufferedReader br = new BufferedReader(new FileReader("ElencoContatti.csv"))){
+        try(BufferedReader br = new BufferedReader(new FileReader(UtilityClass.username + ".csv"))){
             
             ///< Controllo per vedere se il file è terminato.
             if(br.readLine() == null)

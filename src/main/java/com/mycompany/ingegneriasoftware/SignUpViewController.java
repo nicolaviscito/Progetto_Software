@@ -153,7 +153,7 @@ public class SignUpViewController implements Initializable {
                     pw.append(mailField.getText());
                     pw.append(";");
                 }
-                pw.append("\n");
+                pw.append('\n');
             }
         try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(usernameField.getText() + ".csv")))){}
     }

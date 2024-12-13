@@ -11,6 +11,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
@@ -85,7 +87,11 @@ public class RubricaViewController implements Initializable {
         
         elencoContattiOsservabile = FXCollections.observableList(new ElencoContatti().getElencoContatti());
         
-        /*da riscrivere questa funzione di lettura perche non legge tutto il file ma soltanto la prima riga*/
+        try {
+            elencoContattiOsservabile = (ObservableList<Contatto>) NewContactViewController.leggiContattiInfoCSV();
+        } catch (IOException ex) {}
+        
+        /*da riscrivere questa funzione di lettura perche non legge tutto il file ma soltanto la prima riga
         try(BufferedReader br = new BufferedReader(new FileReader(UtilityClass.username + ".csv"))){
             String line;
             while((line = br.readLine()) != null){
@@ -96,10 +102,10 @@ public class RubricaViewController implements Initializable {
         } catch (FileNotFoundException ex) {
         } catch (IOException ex) {
         }
-        /*-----------------------------------------------------------------------------------------------------*/
+        /*-----------------------------------------------------------------------------------------------------
         for(Contatto c : elencoContattiOsservabile){
             data.add(c);
-        }
+        }*/
         
         FilteredList<Contatto> filteredData = new FilteredList<>(data, s -> true);
         
@@ -126,7 +132,9 @@ public class RubricaViewController implements Initializable {
     }
 
     @FXML
-    private void modifyContact(ActionEvent event) {
+    private void modifyContact(ActionEvent event) throws IOException {
+        UtilityClass.stage.close();
+        UtilityClass.openNewStage(new Scene(App.loadFXML("ModifyContactView")));
     }
 
     @FXML
@@ -195,5 +203,9 @@ public class RubricaViewController implements Initializable {
                 }
             }             
         }
+    }
+    
+    public Contatto getSelectionedContact(){
+        return contactBox.getSelectionModel().getSelectedItem();
     }
 }
