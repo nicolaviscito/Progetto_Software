@@ -52,4 +52,9 @@ public class ElencoContatti {
     public void aggiungiContatto(Contatto c){
         this.elencoContatti.add(c);
     }
+    
+    public void removeContact(Contatto c){
+        this.elencoContatti.remove(c);
+    }
+    
 }

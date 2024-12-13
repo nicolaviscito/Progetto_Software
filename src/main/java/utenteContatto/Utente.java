@@ -22,7 +22,6 @@ public class Utente {
     private String password;
     private String email;
     private String numtel;
-    private ElencoContatti elencoContatti;
 
     /**
      * @brief Costruttore: inizializza tutti gli attributi.
@@ -37,7 +36,6 @@ public class Utente {
         this.password = password;
         this.email = email;
         this.numtel = numtel;
-        this.elencoContatti = new ElencoContatti();
     }
     
     /**
@@ -47,7 +45,7 @@ public class Utente {
      * @return Il metodo ritorna il nome di un utente.
      */
     public String getName() {
-        return name;
+        return this.name;
     }
     
     /**
@@ -57,7 +55,7 @@ public class Utente {
      * @return Il metodo ritorna il cognome di un utente.
      */
     public String getSurname() {
-        return surname;
+        return this.surname;
     }
     
     /**
@@ -67,7 +65,7 @@ public class Utente {
      * @return Il metodo ritorna l'username di un utente.
      */
     public String getUsername() {
-        return username;
+        return this.username;
     }
 
     /**
@@ -77,7 +75,7 @@ public class Utente {
      * @return Il metodo ritorna la password di un utente.
      */
     public String getPassword() {
-        return password;
+        return this.password;
     }
     
     /**
@@ -87,7 +85,7 @@ public class Utente {
      * @return Il metodo ritorna l'E-Mail di un utente.
      */
     public String getEmail() {
-        return email;
+        return this.email;
     }
     
     /**
@@ -97,17 +95,7 @@ public class Utente {
      * @return Il metodo ritorna il numero di telefono di un utente.
      */
     public String getNumtel() {
-        return numtel;
-    }
-
-    /**
-     * @brief Questo metodo "getNumTel()" restituisce l'eleco degli utenti.
-     * 
-     * @param[in] Il metodo non usa nessun parametro in ingresso.
-     * @return Il metodo ritorna l'elenco degli utenti.
-     */
-    public ElencoContatti getElencoContatti() {
-        return elencoContatti;
+        return this.numtel;
     }
     
     /**
@@ -168,16 +156,6 @@ public class Utente {
      */
     public void setNumtel(String numtel) {
         this.numtel = numtel;
-    }
-
-    /**
-     * @brief Questo metodo "setEmail()" associa a un utente un elenco di contatti.
-     * 
-     * @param[in] name Il metodo prende in ingresso l'elenco di contatti da impostare.
-     * @return Nessun valore di ritorno.
-     */
-    public void setElencoContatti(ElencoContatti elencoContatti) {
-        this.elencoContatti = elencoContatti;
     }
 }
 

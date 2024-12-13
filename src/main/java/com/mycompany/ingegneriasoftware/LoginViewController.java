@@ -38,6 +38,7 @@ public class LoginViewController implements Initializable {
      TextField usernameField;
     @FXML
      Label errorLabel;
+    
 
     /**
      * Initializes the controller class.
@@ -46,7 +47,7 @@ public class LoginViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        // TODO     
     }    
     
     /**
@@ -66,10 +67,9 @@ public class LoginViewController implements Initializable {
     private void openMailView(ActionEvent event) throws IOException {
         
         ///< Accesso all'elenco dove sono stati inseriti tutti gli utenti e le informazioni associate.
-        ElencoUtenti elencoUtenti = UtilityClass.leggiUserInfoCSV();
         
         ///< Iterazione per fare il controllo su ognuno degli utenti presenti nell'elenco.
-        for(Utente u : elencoUtenti.getListaUtenti()){
+        for(Utente u : UtilityClass.elencoUtenti.getListaUtenti()){
             
             ///< Controllo per verificare se "Username" e "Password" sono corretti.
             if((u.getUsername().equals(usernameField.getText())) && (u.getPassword().equals(passwordField.getText()))){

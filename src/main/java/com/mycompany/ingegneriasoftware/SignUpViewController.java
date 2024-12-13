@@ -5,9 +5,7 @@
  */
 package com.mycompany.ingegneriasoftware;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -23,7 +21,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
-import utenteContatto.ElencoUtenti;
 import utenteContatto.Utente;
 
 /**
@@ -37,10 +34,6 @@ import utenteContatto.Utente;
  * @date December 07, 2024.
  */
 public class SignUpViewController implements Initializable {
-    
-    ///< Attributi per l'interfaccia grafica della registrazione utente ideati e scritti da Giuseppe Messalino.
-    private ElencoUtenti elencoUtenti = new ElencoUtenti();
-
     @FXML
     private Button confirmButton;
     @FXML
@@ -98,65 +91,6 @@ public class SignUpViewController implements Initializable {
         UtilityClass.stage.close();
         UtilityClass.openNewStage(new Scene(App.loadFXML("RubricaView")));
     }
-    
-    /**
-     * @brief Metodo per la scrittura delle informazioni riguardanti gli utenti che si registrano.
-     *
-     * Questo metodo permette di scrivere le informazioni richieste, che l'utente inserisce nell'interfaccia dedicata alla registrazione utente,
-     * in un file esterno "ElencoUtenti.csv".
-     * 
-     * @param[in] Il metodo non usa nessun parametro in ingresso.
-     * @return Nessun valore di ritorno.
-     * 
-     * @author Nicola Viscito , Giuseppe Messalino.
-     * @throws IOException 
-     */
-    public void salvaUserInfoCSV() throws IOException{
-        UtilityClass.username = usernameField.getText();
-        ///< Istanziamento di due oggetti "PrintWriter", "BufferedWriter" e "FileWriter" per la scrittura sul file "ElencoUtenti.csv".
-        try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("ElencoUtenti.csv" , true)))){
-            ///< Scrittura delle informazioni nel file esterno.
-                if(nameField.getText().isEmpty()){
-                    pw.append("");
-                    pw.append(";");
-                }else{
-                    pw.append(nameField.getText());
-                    pw.append(";");
-                }
-                
-                if(surnameField.getText().isEmpty()){
-                    pw.append("");
-                    pw.append(";");
-                }else{
-                    pw.append(surnameField.getText());
-                    pw.append(";");
-                }
-                
-                pw.append(usernameField.getText());
-                pw.append(";");
-                
-                pw.append(passwordField.getText());
-                pw.append(";");
-                
-                if(phoneField.getText().isEmpty()){
-                    pw.append("");
-                    pw.append(";");
-                }else{
-                    pw.append(phoneField.getText());
-                    pw.append(";");
-                }
-                
-                if(mailField.getText().isEmpty()){
-                    pw.append("");
-                    pw.append(";");
-                }else{
-                    pw.append(mailField.getText());
-                    pw.append(";");
-                }
-                pw.append('\n');
-            }
-        try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(usernameField.getText() + ".csv")))){}
-    }
        
     /**
      * @brief Metodo che effettua la registrazione di un nuovo utente.
@@ -172,22 +106,41 @@ public class SignUpViewController implements Initializable {
      */
     
     public void RegistraUtente() throws IOException{
+        String name;
+        String surname;
+        String phone;
+        String mail;
         
-        ///< Creazione del nuovo utente, a cui passiamo i parametri presi dai TextFields dell'interfaccia di registrazione utente "SignUpView".
-        Utente u = new  Utente(nameField.getText(), surnameField.getText(), usernameField.getText(), passwordField.getText(), mailField.getText(), phoneField.getText());
+        if(nameField.getText().isEmpty())
+            name = "null";
+        else name = nameField.getText();
         
-        for(Utente ut : UtilityClass.leggiUserInfoCSV().getListaUtenti()){
+        if(surnameField.getText().isEmpty())
+            surname = "null";
+        else surname = surnameField.getText();
+        
+        if(phoneField.getText().isEmpty())
+            phone = "null";
+        else phone = phoneField.getText(); 
+        
+        if(mailField.getText().isEmpty())
+            mail = "null";
+        else mail = mailField.getText();
+///< Creazione del nuovo utente, a cui passiamo i parametri presi dai TextFields dell'interfaccia di registrazione utente "SignUpView".
+        Utente u = new  Utente(name, surname, usernameField.getText(), passwordField.getText(), mail, phone);
+        
+        for(Utente ut : UtilityClass.elencoUtenti.getListaUtenti()){
             if(u.getUsername().equals(usernameField.getText())){
                 errorLabel.setTextFill(Color.RED);
                 errorLabel.setText("L'username inserito è già in uso.");
             }
              else{
                 ///< Aggiunta dell'utente appena creato alla lista degli utenti.
-                elencoUtenti.aggiungiUtente(u);
+                UtilityClass.elencoUtenti.aggiungiUtente(u);
             }
         }
         
         ///< Modifica del file esterno: aggiuta delle informazioni del nuovo utente.
-        salvaUserInfoCSV();
+        UtilityClass.salvaUserInfoCSV(u);
     }
 }

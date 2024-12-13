@@ -89,7 +89,7 @@ public class Contatto {
      * @return Il metodo ritorna una delle E-Mail (la prima) di un contatto.
      */
     public String getEmail1() {
-        return email1;
+        return this.email1;
     }
 
     /**
@@ -99,7 +99,7 @@ public class Contatto {
      * @return Il metodo ritorna una delle E-Mail (la seconda) di un contatto.
      */
     public String getEmail2() {
-        return email2;
+        return this.email2;
     }
 
     /**
@@ -109,7 +109,7 @@ public class Contatto {
      * @return Il metodo ritorna una delle E-Mail (la terza) di un contatto.
      */
     public String getEmail3() {
-        return email3;
+        return this.email3;
     }
 
     /**
@@ -119,7 +119,7 @@ public class Contatto {
      * @return Il metodo ritorna uno dei numeri di telefono (il primo) di un contatto.
      */
     public String getNumTel1() {
-        return numTel1;
+        return this.numTel1;
     }
 
     /**
@@ -129,7 +129,7 @@ public class Contatto {
      * @return Il metodo ritorna uno dei numeri di telefono (il secondo) di un contatto.
      */
     public String getNumTel2() {
-        return numTel2;
+        return this.numTel2;
     }
 
     /**
@@ -139,7 +139,7 @@ public class Contatto {
      * @return Il metodo ritorna uno dei numeri di telefono (il terzo) di un contatto.
      */
     public String getNumTel3() {
-        return numTel3;
+        return this.numTel3;
     }  
 
     /**

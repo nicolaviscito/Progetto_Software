@@ -38,7 +38,7 @@ public class ElencoUtenti {
      * @return Il metodo ritorna la lista degli uenti.
      */
     public List<Utente> getListaUtenti() {
-        return elencoUtenti;
+        return this.elencoUtenti;
     }
     
     /**
@@ -50,4 +50,9 @@ public class ElencoUtenti {
     public void aggiungiUtente(Utente u){
         elencoUtenti.add(u);
     }
+    
+    public void removeUtente(Utente u){
+        this.elencoUtenti.remove(u);
+    }
+    
 }
