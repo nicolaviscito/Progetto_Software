@@ -4,7 +4,11 @@
  */
 package com.mycompany.ingegneriasoftware;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -76,9 +80,50 @@ public class ProfileViewController implements Initializable {
         UtilityClass.openNewStage(new Scene(App.loadFXML("ModifyUserView")));
     }
 
+    /**
+     * @brief Questo metodo implementa l'eliminazione dell'utente dalla lista di utenti.
+     * 
+     * @param[in] event Il metodo prende in ingresso l'evento di pressione del tasto "Elimina Profilo". 
+     * @return Nessun valore di ritorno.
+     * 
+     * @author Nicola Viscito, Giuseppe Messalino, Poalo Vitale.
+     * @throws IOException 
+     */
     @FXML
-    private void deleteProfile(ActionEvent event) {
+    private void deleteProfile(ActionEvent event) throws IOException {
+        ///< Riferimento all'utente da eliminare.
+        Utente utenteDaEliminare = null;
         
+        ///< Scorrimento di tutta la lista per trovare l'utente da eliminare;
+        for (Utente u : UtilityClass.elencoUtenti.getListaUtenti()) {
+            if (u.getName().equals(profileName.getText()) &&
+                u.getSurname().equals(profileSurname.getText()) &&
+                u.getUsername().equals(profileUsername.getText()) &&
+                u.getPassword().equals(profilePassword.getText()) &&
+                u.getEmail().equals(profileEmail.getText()) &&
+                u.getNumtel().equals(profilePhone.getText())) {
+                utenteDaEliminare = u;  ///< Assegnazione dell'utente da eliminare in una variabile d'appoggio.
+                break; // Esci dal ciclo dopo aver trovato il contatto
+            }
+        }
+        
+        ///< Rimozione dalla lista di utenti dell'utente da eliminare.
+        if (utenteDaEliminare != null) {
+            UtilityClass.elencoUtenti.getListaUtenti().remove(utenteDaEliminare);
+        }
+        
+        ///< Riscrittura del file esterno.
+        try (PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(UtilityClass.username + ".csv")))) {
+            for (Utente utente : UtilityClass.elencoUtenti.getListaUtenti()) {
+                pw.append(utente.getName().isEmpty() ? "null" : utente.getName()).append(";");
+                pw.append(utente.getSurname().isEmpty() ? "null" : utente.getSurname()).append(";");
+                pw.append(utente.getUsername().isEmpty() ? "null" : utente.getUsername()).append(";");
+                pw.append(utente.getPassword().isEmpty() ? "null" : utente.getPassword()).append(";");
+                pw.append(utente.getEmail().isEmpty() ? "null" : utente.getEmail()).append(";");
+                pw.append(utente.getNumtel().isEmpty() ? "null" : utente.getNumtel()).append(";");
+                pw.append('\n');
+            }
+        }
     }
 
     @FXML

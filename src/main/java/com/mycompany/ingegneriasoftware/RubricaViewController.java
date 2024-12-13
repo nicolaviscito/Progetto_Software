@@ -6,10 +6,14 @@
 package com.mycompany.ingegneriasoftware;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
+import java.util.Collection;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,13 +36,18 @@ import javafx.scene.input.MouseEvent;
 import utenteContatto.Contatto;
 
 /**
- * FXML Controller class
- *
- * @author 39334
+ * @file RubricaviewController.java
+ * @brief Questa classe implementa l'interfaccia della rubrica.
+ * 
+ * Questa classe si occupa di gestire tutte le interazioni possibili che l'utente può avere con l'interfaccia grafica
+ * che gestisce la rubrica.
+ * 
+ * @author Nicola Viscito, Giuseppe Messalino, Paolo Vitale.
+ * @date December 09, 2024.
  */
 public class RubricaViewController implements Initializable {
-    private ObservableList<Contatto> elencoContattiOsservabile;
-    
+    private ObservableList<Contatto> elencoContattiOsservabile = FXCollections.observableArrayList();
+
     @FXML
     private TextField searchField;
     @FXML
@@ -71,7 +80,7 @@ public class RubricaViewController implements Initializable {
     private TableView<Contatto> contactBox;
     @FXML
     private Pane infoPanel;
-
+    
     /**
      * Initializes the controller class.
      */
@@ -82,10 +91,14 @@ public class RubricaViewController implements Initializable {
         this.delateButton.setDisable(true);
         this.modifyButton.setDisable(true);
 
-        this.contactColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome() + " " + cellData.getValue().getCognome()));
+        this.contactColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCognome() + " " + cellData.getValue().getNome()));
         ObservableList<Contatto> data = FXCollections.observableArrayList();
         
-        elencoContattiOsservabile = FXCollections.observableList(new ElencoContatti().getElencoContatti());
+        elencoContattiOsservabile.setAll(UtilityClass.elencoContatti.getElencoContatti());
+        for(Contatto c : UtilityClass.elencoContatti.getElencoContatti()){
+            elencoContattiOsservabile.add(c);
+            contactBox.setItems(elencoContattiOsservabile);
+        }
         
         /*da riscrivere questa funzione di lettura perche non legge tutto il file ma soltanto la prima riga
         try(BufferedReader br = new BufferedReader(new FileReader(UtilityClass.username + ".csv"))){
@@ -118,15 +131,57 @@ public class RubricaViewController implements Initializable {
         });    
     }    
 
+    /**
+     * @brief Questo metodo implementa l'eliminazione del contatto dalla rubrica.
+     * 
+     * @param[in] event Il metodo prende in ingresso l'evento di pressione del tasto "Elimina". 
+     * @return Nessun valore di ritorno.
+     * 
+     * @author Nicola Viscito, Giuseppe Messalino, Poalo Vitale.
+     * @throws IOException
+     */
     @FXML
-    private void deleteContact(ActionEvent event) {
-        for(Contatto c : elencoContattiOsservabile){
-            if((c.getNome().equals(nameLabel.getText()))&& (c.getCognome().equals(surnameLabel.getText()))){
-                elencoContattiOsservabile.remove(c);
+    private void deleteContact(ActionEvent event) throws IOException {
+        
+        ///< Riferimento al contatto da eliminare.
+        Contatto contattoDaEliminare = null;
+        
+        ///< Scorrimento di tutta la lista per trovare il contatto da eliminare;
+        for (Contatto c : UtilityClass.elencoContatti.getElencoContatti()) {
+            if (c.getNome().equals(nameLabel.getText()) &&
+                c.getCognome().equals(surnameLabel.getText()) &&
+                c.getEmail1().equals(mailLabel1.getText()) &&
+                c.getEmail2().equals(mailLabel2.getText()) &&
+                c.getEmail3().equals(mailLabel3.getText()) &&
+                c.getNumTel1().equals(phoneLabel1.getText()) &&
+                c.getNumTel2().equals(phoneLabel2.getText()) &&
+                c.getNumTel3().equals(phoneLabel3.getText())) {
+                contattoDaEliminare = c;    ///< Assegnazione dell'utente da eliminare in una variabile d'appoggio.
+                break; // Esci dal ciclo dopo aver trovato il contatto
+            }
+        }
+        
+        ///< Rimozione dalla lista di utenti dell'utente da eliminare.
+        if (contattoDaEliminare != null) {
+            UtilityClass.elencoContatti.getElencoContatti().remove(contattoDaEliminare);
+        }
+        
+        ///< Riscrittura del file esterno.
+        try (PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(UtilityClass.username + ".csv")))) {
+            for (Contatto contatto : elencoContattiOsservabile) {
+                pw.append(contatto.getNome().isEmpty() ? "null" : contatto.getNome()).append(";");
+                pw.append(contatto.getCognome().isEmpty() ? "null" : contatto.getCognome()).append(";");
+                pw.append(contatto.getEmail1().isEmpty() ? "null" : contatto.getEmail1()).append(";");
+                pw.append(contatto.getEmail2().isEmpty() ? "null" : contatto.getEmail2()).append(";");
+                pw.append(contatto.getEmail3().isEmpty() ? "null" : contatto.getEmail3()).append(";");
+                pw.append(contatto.getNumTel1().isEmpty() ? "null" : contatto.getNumTel1()).append(";");
+                pw.append(contatto.getNumTel2().isEmpty() ? "null" : contatto.getNumTel2()).append(";");
+                pw.append(contatto.getNumTel3().isEmpty() ? "null" : contatto.getNumTel3()).append(";");
+                pw.append('\n');
             }
         }
     }
-
+    
     @FXML
     private void modifyContact(ActionEvent event) throws IOException {
         UtilityClass.stage.close();
@@ -146,14 +201,14 @@ public class RubricaViewController implements Initializable {
     }
 
     
-/**
- * @brief metodo per visualizzare le informazioni di un contatto nel panel dedicato 
- * 
- * @param[in] Il metodo ha in input l'evento "Click su una riga della tabella".
- * @return Nessun valore di ritorno.
- * 
- * @author Giuseppe Messalino.
- */
+    /**
+     * @brief Metodo per visualizzare le informazioni di un contatto nel panel dedicato.
+     * 
+     * @param[in] Il metodo ha in input l'evento "Click su una riga della tabella".
+     * @return Nessun valore di ritorno.
+     * 
+     * @author Giuseppe Messalino.
+     */
     @FXML
     private void openContactView(MouseEvent event) {
         if(contactBox.getSelectionModel().getSelectedItem() != null){
@@ -165,35 +220,35 @@ public class RubricaViewController implements Initializable {
         
             for(Contatto c : elencoContattiOsservabile){
                 if(c.getNome().equals(selectedContact)){
-                    if(c.getNome().equals("null"))
+                    if(c.getNome().equals(""))
                         nameLabel.setText("");
                     else nameLabel.setText(c.getNome());
                     
-                    if(c.getCognome().equals("null"))
+                    if(c.getCognome().equals(""))
                         surnameLabel.setText("");
                     else surnameLabel.setText(c.getCognome());
                     
-                    if(c.getNumTel1().equals("null"))
+                    if(c.getNumTel1().equals(""))
                         phoneLabel1.setText("");
                     else phoneLabel1.setText(c.getNumTel1());
                     
-                    if(c.getNumTel2().equals("null"))
+                    if(c.getNumTel2().equals(""))
                         phoneLabel2.setText("");
                     else phoneLabel2.setText(c.getNumTel2());
                     
-                    if(c.getNumTel3().equals("null"))
+                    if(c.getNumTel3().equals(""))
                         phoneLabel3.setText("");
                     else phoneLabel3.setText(c.getNumTel3());                                                                                                                              
                     
-                    if(c.getEmail1().equals("null"))
+                    if(c.getEmail1().equals(""))
                         mailLabel1.setText("");
                     else mailLabel1.setText(c.getEmail1());
                     
-                    if(c.getEmail2().equals("null"))
+                    if(c.getEmail2().equals(""))
                         mailLabel2.setText("");
                     else mailLabel2.setText(c.getEmail2());
                     
-                    if(c.getEmail3().equals("null"))
+                    if(c.getEmail3().equals(""))
                         mailLabel3.setText("");
                     else mailLabel3.setText(c.getEmail3());                    
                 }
@@ -201,6 +256,14 @@ public class RubricaViewController implements Initializable {
         }
     }
     
+    /**
+     * @brief Metodo per ottenere il riferimento del contatto selezionato nella rubrica.
+     * 
+     * @param[in] Il metodo non ha nessun parametro in ingresso.
+     * @return Il metodo restituisce il contatto selezionato nell'interfaccia della rubrica.
+     * 
+     * @author Nicola Viscito.
+     */
     public Contatto getSelectionedContact(){
         return contactBox.getSelectionModel().getSelectedItem();
     }

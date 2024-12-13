@@ -4,7 +4,10 @@
  */
 package com.mycompany.ingegneriasoftware;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -52,28 +55,49 @@ public class ModifyUserViewController implements Initializable {
 
     @FXML
     private void modifyProfile(ActionEvent event) throws IOException {
-        
+        boolean modificaEffettuata = false;
         for(Utente u : UtilityClass.elencoUtenti.getListaUtenti()){
             if(u.getUsername().equals(UtilityClass.username)){
                 if(!newNameField.getText().isEmpty()){
                     u.setName(newNameField.getText());
+                    modificaEffettuata = true;
                 }
                 if(!newSurnameField.getText().isEmpty()){
                     u.setSurname(newSurnameField.getText());
+                    modificaEffettuata = true;
                 }
                 if(!newTelephoneField.getText().isEmpty()){
                     u.setNumtel(newTelephoneField.getText());
+                    modificaEffettuata = true;
                 }
                 if(!newEmailField.getText().isEmpty()){
                     u.setEmail(newEmailField.getText());
+                    modificaEffettuata = true;
                 }
                 if(!newUsernameField.getText().isEmpty()){
                     u.setUsername(newUsernameField.getText());
+                    modificaEffettuata = true;
                 }
                 if(!newPasswordField.getText().isEmpty()){
                     u.setPassword(newPasswordField.getText());
+                    modificaEffettuata = true;
                 }
-                UtilityClass.salvaUserInfoCSV(u);
+                break;
+            }
+        }
+        
+        if(modificaEffettuata){
+        // Riscrivi il file CSV con tutti gli utenti aggiornati
+            try (PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(UtilityClass.username + ".csv")))) {
+                for (Utente utente : UtilityClass.elencoUtenti.getListaUtenti()) {
+                    pw.append(utente.getName().isEmpty() ? "null" : utente.getName()).append(";");
+                    pw.append(utente.getSurname().isEmpty() ? "null" : utente.getSurname()).append(";");
+                    pw.append(utente.getEmail().isEmpty() ? "null" : utente.getEmail()).append(";");
+                    pw.append(utente.getNumtel().isEmpty() ? "null" : utente.getNumtel()).append(";");
+                    pw.append(utente.getUsername().isEmpty() ? "null" : utente.getUsername()).append(";");
+                    pw.append(utente.getPassword().isEmpty() ? "null" : utente.getPassword()).append(";");
+                    pw.append('\n');
+                }
             }
         }
        

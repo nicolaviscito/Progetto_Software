@@ -38,7 +38,6 @@ import utenteContatto.ElencoContatti;
 public class NewContactViewController implements Initializable {
     
     ///< Attributi per l'interfaccia grafica della creazione contatto ideati e scritti da Nicola Viscito.
-    private ElencoContatti elencoContatti = new ElencoContatti();
     @FXML
     private TextField newNameField;
     @FXML
@@ -67,9 +66,6 @@ public class NewContactViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        try {
-            elencoContatti = leggiContattiInfoCSV();
-        } catch (IOException ex) {}
     }    
 
     /**
@@ -107,224 +103,17 @@ public class NewContactViewController implements Initializable {
             );
             
             ///< Aggiunta del contatto appena creato alla lista dei contatti.
-            elencoContatti.aggiungiContatto(c);
+            UtilityClass.elencoContatti.aggiungiContatto(c);
         
             ///< Modifica del file esterno: aggiuta delle informazioni del nuovo contatto.
-            salvaContattoInfoCSV(c);
-        
+            UtilityClass.salvaContattoInfoCSV(c);
+            
             ///< chiusura dell'interfaccia corrente "NewContactView" e apertura dell'interfaccia "RubricaView".
             UtilityClass.stage.close();
             UtilityClass.openNewStage(new Scene(App.loadFXML("RubricaView")));
             
         }
     } 
-    
-    /**
-     * @brief Metodo per la scrittura delle informazioni riguardanti i contatti salvati.
-     *
-     * Questo metodo permette di scrivere le informazioni richieste, che l'utente inserisce nell'interfaccia dedicata alla creazione contatto,
-     * in un file esterno "ElencoContatti.csv".
-     * 
-     * @param[in] Il metodo non usa nessun parametro in ingresso.
-     * @return Nessun valore di ritorno.
-     * 
-     * @author Nicola Viscito.
-     * @throws IOException 
-     */
-    public void salvaContattiInfoCSV() throws IOException{
-        
-        ///< Istanziamento di due oggetti "PrintWriter", "BufferedWriter" e "FileWriter" per la scrittura sul file "ElencoContatti.csv".
-        try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(UtilityClass.username + ".csv")))){
-            
-            ///< Scrittura delle informazioni nel file esterno.
-            for(Contatto c : elencoContatti.getElencoContatti()){
-                    if(c.getNome().equals("null")){
-                        pw.append("null");
-                        pw.append(";");
-                    }
-                    else{
-                        pw.append(newNameField.getText());
-                        pw.append(";");
-                    }
-
-                    if(c.getCognome().equals("null")){
-                        pw.append("null");
-                        pw.append(";");
-                    }
-                    else{
-                        pw.append(newSurnameField.getText());
-                        pw.append(";");
-                    }
-                    
-                    if(c.getEmail1().equals("null")){
-                        pw.append("null");
-                        pw.append(";");
-                    }
-                    else {
-                        pw.append(newEmail1Field.getText());
-                        pw.append(";");
-                    }
-                    
-                    if(c.getEmail2().equals("null")){
-                        pw.append("null");
-                        pw.append(";");
-                    }   
-                    else {
-                        pw.append(newEmail2Field.getText());
-                        pw.append(";");
-                    }
-                    
-                    if(c.getEmail3().equals("null")){
-                        pw.append("null");
-                        pw.append(";");
-                    }   
-                    else {
-                        pw.append(newEmail3Field.getText());
-                        pw.append(";");
-                    }                                                                                                                              
-                    
-                    if(c.getNumTel1().equals("null")){
-                        pw.append("null");
-                        pw.append(";");
-                    } 
-                    else{
-                        pw.append(newTelephone1Field.getText());
-                        pw.append(";");
-                    }
-                    
-                    if(c.getNumTel2().equals("null")){
-                        pw.append("null");
-                        pw.append(";");
-                    }   
-                    else {
-                        pw.append(newTelephone2Field.getText());
-                        pw.append(";");
-                    }
-                    
-                    if(c.getNumTel3().equals("null")){
-                        pw.append("null");
-                        pw.append(";");
-                    }   
-                    else{
-                        pw.append(newTelephone3Field.getText());
-                        pw.append(";");
-                    }                    
-            }
-        }
-    }
-    
-    public void salvaContattoInfoCSV(Contatto c) throws IOException{
-        ///< Istanziamento di due oggetti "PrintWriter", "BufferedWriter" e "FileWriter" per la scrittura sul file "ElencoContatti.csv".
-        try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(UtilityClass.username + ".csv")))){
-            
-            pw.println("NOME;COGNOME;EMAIL1;EMAIL2;EMAIL3;NUMERO DI TELEFONO1; NUMERO DI TELEFONO2; NUMERO DI TELEFONO3");
-            ///< Scrittura delle informazioni nel file esterno.
-                    if(c.getNome().equals("null")){
-                        pw.append("null");
-                        pw.append(";");
-                    }
-                    else{
-                        pw.append(newNameField.getText());
-                        pw.append(";");
-                    }
-
-                    if(c.getCognome().equals("null")){
-                        pw.append("null");
-                        pw.append(";");
-                    }
-                    else{
-                        pw.append(newSurnameField.getText());
-                        pw.append(";");
-                    }
-                    
-                    if(c.getEmail1().equals("null")){
-                        pw.append("null");
-                        pw.append(";");
-                    }
-                    else {
-                        pw.append(newEmail1Field.getText());
-                        pw.append(";");
-                    }
-                    
-                    if(c.getEmail2().equals("null")){
-                        pw.append("null");
-                        pw.append(";");
-                    }   
-                    else {
-                        pw.append(newEmail2Field.getText());
-                        pw.append(";");
-                    }
-                    
-                    if(c.getEmail3().equals("null")){
-                        pw.append("null");
-                        pw.append(";");
-                    }   
-                    else {
-                        pw.append(newEmail3Field.getText());
-                        pw.append(";");
-                    }                                                                                                                              
-                    
-                    if(c.getNumTel1().equals("null")){
-                        pw.append("null");
-                        pw.append(";");
-                    } 
-                    else{
-                        pw.append(newTelephone1Field.getText());
-                        pw.append(";");
-                    }
-                    
-                    if(c.getNumTel2().equals("null")){
-                        pw.append("null");
-                        pw.append(";");
-                    }   
-                    else {
-                        pw.append(newTelephone2Field.getText());
-                        pw.append(";");
-                    }
-                    
-                    if(c.getNumTel3().equals("null")){
-                        pw.append("null");
-                        pw.append(";");
-                    }   
-                    else{
-                        pw.append(newTelephone3Field.getText());
-                        pw.append(";");
-                    }                    
-        }
-    }
-    
-    /**
-     * @brief Metodo per leggere le informazioni dei contatti in un file esterno.
-     * 
-     * Questo metodo accede al file esterno "ElencoContatti.csv" dove sono state salvate tutte le informazioni associate ad un 
-     * contatto attraverso il metodo "salvaContattiInfoCSV()".
-     * 
-     * @param[in] Il metodo non usa nessun parametro in ingresso.
-     * @return L'elenco dei contatti.
-     * 
-     * @author Nicola Viscito.
-     * @throws IOException 
-     */
-    public static ElencoContatti leggiContattiInfoCSV() throws IOException{
-        ElencoContatti ec = new ElencoContatti();
-        
-        ///< Istanziamento di due oggetti "Bufferedreader" e "FileReader" per la lettura del file "ElencoUtenti.csv".
-        try(BufferedReader br = new BufferedReader(new FileReader(UtilityClass.username + ".csv"))){
-            
-            ///< Controllo per vedere se il file è terminato.
-            if(br.readLine() == null)
-                return ec;
-            
-            ///< Codice per comporre la lista di utenti che sono stati aggiungi nel file esterno "ElencoUtenti.csv".
-            String line;
-            while((line = br.readLine()) != null){
-                String campi[] = line.split(";");
-                Contatto c = new Contatto(campi[0], campi[1], campi[2], campi[3], campi[4], campi[5], campi[6], campi[7]);
-                ec.aggiungiContatto(c);
-            }
-        }
-        return ec;
-    }
 
     @FXML
     private void goBack(ActionEvent event) throws IOException {
