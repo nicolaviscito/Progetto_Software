@@ -33,7 +33,7 @@ public class ModifyContactViewController implements Initializable {
     
     private RubricaViewController controllerRubrica = new RubricaViewController();
     
-    private Contatto selectionedContact;
+    private String selectionedContact;
     @FXML
     private TextField newSurnameField;
     @FXML
@@ -61,44 +61,44 @@ public class ModifyContactViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        selectionedContact = controllerRubrica.getSelectionedContact();
+        selectionedContact = RubricaViewController.selectionedName;
     }   
 
     @FXML
     private void modifyContact(ActionEvent event) throws IOException {
         boolean modificaEffettuata = false;
         for(Contatto c : UtilityClass.leggiContattiInfoCSV().getElencoContatti()){
-            if(selectionedContact.getNome().equals(c.getNome())){
+            if(selectionedContact.equals(c.getNome())){
                 if(!newNameField.getText().isEmpty()){
-                    selectionedContact.setNome(newNameField.getText());
+                    c.setNome(newNameField.getText());
                     modificaEffettuata = true;
                 }
                 if(!newSurnameField.getText().isEmpty()){
-                    selectionedContact.setCognome(newSurnameField.getText());
+                    c.setCognome(newSurnameField.getText());
                     modificaEffettuata = true;
                 }
                 if(!newTelephone1Field.getText().isEmpty()){
-                    selectionedContact.setNumTel1(newTelephone1Field.getText());
+                    c.setNumTel1(newTelephone1Field.getText());
                     modificaEffettuata = true;
                 }
                 if(!newTelephone2Field.getText().isEmpty()){
-                    selectionedContact.setNumTel2(newTelephone2Field.getText());
+                    c.setNumTel2(newTelephone2Field.getText());
                     modificaEffettuata = true;
                 }
                 if(!newTelephone3Field.getText().isEmpty()){
-                    selectionedContact.setNumTel3(newTelephone3Field.getText());
+                    c.setNumTel3(newTelephone3Field.getText());
                     modificaEffettuata = true;
                 }
                 if(!newEmail1Field.getText().isEmpty()){
-                    selectionedContact.setEmail1(newEmail1Field.getText());
+                    c.setEmail1(newEmail1Field.getText());
                     modificaEffettuata = true;
                 }
                 if(!newEmail2Field.getText().isEmpty()){
-                    selectionedContact.setEmail2(newEmail2Field.getText());
+                    c.setEmail2(newEmail2Field.getText());
                     modificaEffettuata = true;
                 }
                 if(!newEmail3Field.getText().isEmpty()){
-                    selectionedContact.setEmail3(newEmail3Field.getText());
+                    c.setEmail3(newEmail3Field.getText());
                     modificaEffettuata = true;
                 }
                 break;
@@ -121,7 +121,8 @@ public class ModifyContactViewController implements Initializable {
                 }
             }
         }
+        UtilityClass.elencoContatti = UtilityClass.leggiContattiInfoCSV();
         UtilityClass.stage.close();
-        UtilityClass.openNewStage(new Scene(App.loadFXML("ProfileView")));
+        UtilityClass.openNewStage(new Scene(App.loadFXML("RubricaView")));
     }
 }

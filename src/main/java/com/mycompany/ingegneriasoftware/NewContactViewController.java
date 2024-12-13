@@ -104,9 +104,9 @@ public class NewContactViewController implements Initializable {
             
             ///< Aggiunta del contatto appena creato alla lista dei contatti.
             UtilityClass.elencoContatti.aggiungiContatto(c);
-        
             ///< Modifica del file esterno: aggiuta delle informazioni del nuovo contatto.
             UtilityClass.salvaContattoInfoCSV(c);
+            UtilityClass.elencoContatti = UtilityClass.leggiContattiInfoCSV();
             
             ///< chiusura dell'interfaccia corrente "NewContactView" e apertura dell'interfaccia "RubricaView".
             UtilityClass.stage.close();

@@ -47,7 +47,7 @@ import utenteContatto.Contatto;
  */
 public class RubricaViewController implements Initializable {
     private ObservableList<Contatto> elencoContattiOsservabile = FXCollections.observableArrayList();
-
+    public static String selectionedName;
     @FXML
     private TextField searchField;
     @FXML
@@ -96,8 +96,7 @@ public class RubricaViewController implements Initializable {
         
         elencoContattiOsservabile.setAll(UtilityClass.elencoContatti.getElencoContatti());
         for(Contatto c : UtilityClass.elencoContatti.getElencoContatti()){
-            elencoContattiOsservabile.add(c);
-            contactBox.setItems(elencoContattiOsservabile);
+            data.add(c);
         }
         
         /*da riscrivere questa funzione di lettura perche non legge tutto il file ma soltanto la prima riga
@@ -217,7 +216,7 @@ public class RubricaViewController implements Initializable {
             this.modifyButton.setDisable(false);
         
             String selectedContact = contactBox.getSelectionModel().getSelectedItem().getNome();
-        
+            selectionedName = contactBox.getSelectionModel().getSelectedItem().getNome();
             for(Contatto c : elencoContattiOsservabile){
                 if(c.getNome().equals(selectedContact)){
                     if(c.getNome().equals(""))
@@ -264,7 +263,4 @@ public class RubricaViewController implements Initializable {
      * 
      * @author Nicola Viscito.
      */
-    public Contatto getSelectionedContact(){
-        return contactBox.getSelectionModel().getSelectedItem();
-    }
 }

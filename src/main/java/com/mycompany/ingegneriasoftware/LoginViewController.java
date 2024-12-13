@@ -76,6 +76,7 @@ public class LoginViewController implements Initializable {
                 
                 ///< chiusura dell'interfaccia corrente "LoginView" e apertura dell'interfaccia "RubricaView".
                 UtilityClass.username = usernameField.getText();
+                UtilityClass.elencoContatti = UtilityClass.leggiContattiInfoCSV();
                 UtilityClass.stage.close();
                 UtilityClass.openNewStage(new Scene(App.loadFXML("RubricaView")));
             }
