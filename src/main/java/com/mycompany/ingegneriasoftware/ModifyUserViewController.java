@@ -52,7 +52,8 @@ public class ModifyUserViewController implements Initializable {
 
     @FXML
     private void modifyProfile(ActionEvent event) throws IOException {
-        for(Utente u : UtilityClass.leggiUserInfoCSV().getListaUtenti()){
+        
+        for(Utente u : UtilityClass.elencoUtenti.getListaUtenti()){
             if(u.getUsername().equals(UtilityClass.username)){
                 if(!newNameField.getText().isEmpty()){
                     u.setName(newNameField.getText());
@@ -72,9 +73,10 @@ public class ModifyUserViewController implements Initializable {
                 if(!newPasswordField.getText().isEmpty()){
                     u.setPassword(newPasswordField.getText());
                 }
+                UtilityClass.salvaUserInfoCSV(u);
             }
         }
-       controller.salvaUserInfoCSV();
+       
        UtilityClass.stage.close();
        UtilityClass.openNewStage(new Scene(App.loadFXML("ProfileView")));
     }

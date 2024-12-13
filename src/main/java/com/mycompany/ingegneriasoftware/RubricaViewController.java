@@ -87,10 +87,6 @@ public class RubricaViewController implements Initializable {
         
         elencoContattiOsservabile = FXCollections.observableList(new ElencoContatti().getElencoContatti());
         
-        try {
-            elencoContattiOsservabile = (ObservableList<Contatto>) NewContactViewController.leggiContattiInfoCSV();
-        } catch (IOException ex) {}
-        
         /*da riscrivere questa funzione di lettura perche non legge tutto il file ma soltanto la prima riga
         try(BufferedReader br = new BufferedReader(new FileReader(UtilityClass.username + ".csv"))){
             String line;

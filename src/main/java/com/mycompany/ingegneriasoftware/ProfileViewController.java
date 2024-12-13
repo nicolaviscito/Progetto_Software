@@ -57,18 +57,15 @@ public class ProfileViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb){
-        try {
-            for(Utente u : UtilityClass.leggiUserInfoCSV().getListaUtenti()){
-                if(u.getUsername().equals(UtilityClass.username)){
-                    profileSurname.setText(u.getUsername());
-                    profileName.setText(u.getName());
-                    profileUsername.setText(u.getUsername());
-                    profilePassword.setText(u.getPassword());
-                    profileEmail.setText(u.getEmail());
-                    profilePhone.setText(u.getNumtel());
-                }
+        for(Utente u : UtilityClass.elencoUtenti.getListaUtenti()){
+            if(u.getUsername().equals(UtilityClass.username)){
+                profileSurname.setText(u.getUsername());
+                profileName.setText(u.getName());
+                profileUsername.setText(u.getUsername());
+                profilePassword.setText(u.getPassword());
+                profileEmail.setText(u.getEmail());
+                profilePhone.setText(u.getNumtel());
             }
-        } catch (IOException ex) {
         }
     }    
     

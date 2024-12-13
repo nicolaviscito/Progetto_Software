@@ -28,11 +28,11 @@ import utenteContatto.Utente;
  */
 public class ModifyContactViewController implements Initializable {
 
-    private ElencoContatti elencoContatti;
+    private ElencoContatti elencoContatti = new ElencoContatti();
     
-    private RubricaViewController controllerRubrica;
+    private RubricaViewController controllerRubrica = new RubricaViewController();
     
-    private NewContactViewController controllerNuovoContatto;
+    private NewContactViewController controllerNuovoContatto = new NewContactViewController();
     
     private Contatto selectionedContact;
     @FXML
@@ -63,7 +63,7 @@ public class ModifyContactViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         try {
             // TODO
-            elencoContatti = NewContactViewController.leggiContattiInfoCSV();
+            elencoContatti = controllerNuovoContatto.leggiContattiInfoCSV();
         } catch (IOException ex) {}
         
         selectionedContact = controllerRubrica.getSelectionedContact();
@@ -71,35 +71,35 @@ public class ModifyContactViewController implements Initializable {
 
     @FXML
     private void modifyContact(ActionEvent event) throws IOException {
-        for(Contatto c : NewContactViewController.leggiContattiInfoCSV().getElencoContatti()){
-            if(c.getNome().equals(selectionedContact.getNome())){
+        for(Contatto c : controllerNuovoContatto.leggiContattiInfoCSV().getElencoContatti()){
+            if(selectionedContact.getNome().equals(c.getNome())){
                 if(!newNameField.getText().isEmpty()){
-                    c.setNome(newNameField.getText());
+                    selectionedContact.setNome(newNameField.getText());
                 }
                 if(!newSurnameField.getText().isEmpty()){
-                    c.setCognome(newSurnameField.getText());
+                    selectionedContact.setCognome(newSurnameField.getText());
                 }
                 if(!newTelephone1Field.getText().isEmpty()){
-                    c.setNumTel1(newTelephone1Field.getText());
+                    selectionedContact.setNumTel1(newTelephone1Field.getText());
                 }
                 if(!newTelephone2Field.getText().isEmpty()){
-                    c.setNumTel2(newTelephone2Field.getText());
+                    selectionedContact.setNumTel2(newTelephone2Field.getText());
                 }
                 if(!newTelephone3Field.getText().isEmpty()){
-                    c.setNumTel3(newTelephone3Field.getText());
+                    selectionedContact.setNumTel3(newTelephone3Field.getText());
                 }
                 if(!newEmail1Field.getText().isEmpty()){
-                    c.setEmail1(newEmail1Field.getText());
+                    selectionedContact.setEmail1(newEmail1Field.getText());
                 }
                 if(!newEmail2Field.getText().isEmpty()){
-                    c.setEmail2(newEmail2Field.getText());
+                    selectionedContact.setEmail2(newEmail2Field.getText());
                 }
                 if(!newEmail3Field.getText().isEmpty()){
-                    c.setEmail3(newEmail3Field.getText());
+                    selectionedContact.setEmail3(newEmail3Field.getText());
                 }
             }
         }
-       controllerNuovoContatto.salvaContattiInfoCSV();
+       controllerNuovoContatto.salvaContattoInfoCSV(selectionedContact);
        UtilityClass.stage.close();
        UtilityClass.openNewStage(new Scene(App.loadFXML("ProfileView")));
     }

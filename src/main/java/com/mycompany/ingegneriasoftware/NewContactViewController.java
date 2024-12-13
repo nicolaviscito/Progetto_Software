@@ -38,7 +38,7 @@ import utenteContatto.ElencoContatti;
 public class NewContactViewController implements Initializable {
     
     ///< Attributi per l'interfaccia grafica della creazione contatto ideati e scritti da Nicola Viscito.
-    private ElencoContatti elencoContatti;
+    private ElencoContatti elencoContatti = new ElencoContatti();
     @FXML
     private TextField newNameField;
     @FXML
@@ -138,37 +138,77 @@ public class NewContactViewController implements Initializable {
             
             ///< Scrittura delle informazioni nel file esterno.
             for(Contatto c : elencoContatti.getElencoContatti()){
-                    if(c.getNome().equals("null"))
+                    if(c.getNome().equals("null")){
                         pw.append("null");
-                    else pw.append(newNameField.getText());
+                        pw.append(";");
+                    }
+                    else{
+                        pw.append(newNameField.getText());
+                        pw.append(";");
+                    }
+
+                    if(c.getCognome().equals("null")){
+                        pw.append("null");
+                        pw.append(";");
+                    }
+                    else{
+                        pw.append(newSurnameField.getText());
+                        pw.append(";");
+                    }
                     
-                    if(c.getCognome().equals("null"))
+                    if(c.getEmail1().equals("null")){
                         pw.append("null");
-                    else pw.append(newSurnameField.getText());
+                        pw.append(";");
+                    }
+                    else {
+                        pw.append(newEmail1Field.getText());
+                        pw.append(";");
+                    }
                     
-                    if(c.getEmail1().equals("null"))
+                    if(c.getEmail2().equals("null")){
                         pw.append("null");
-                    else pw.append(newEmail1Field.getText());
+                        pw.append(";");
+                    }   
+                    else {
+                        pw.append(newEmail2Field.getText());
+                        pw.append(";");
+                    }
                     
-                    if(c.getEmail2().equals("null"))
+                    if(c.getEmail3().equals("null")){
                         pw.append("null");
-                    else pw.append(newEmail2Field.getText());
+                        pw.append(";");
+                    }   
+                    else {
+                        pw.append(newEmail3Field.getText());
+                        pw.append(";");
+                    }                                                                                                                              
                     
-                    if(c.getEmail3().equals("null"))
+                    if(c.getNumTel1().equals("null")){
                         pw.append("null");
-                    else pw.append(newEmail3Field.getText());                                                                                                                              
+                        pw.append(";");
+                    } 
+                    else{
+                        pw.append(newTelephone1Field.getText());
+                        pw.append(";");
+                    }
                     
-                    if(c.getNumTel1().equals("null"))
+                    if(c.getNumTel2().equals("null")){
                         pw.append("null");
-                    else pw.append(newTelephone1Field.getText());
+                        pw.append(";");
+                    }   
+                    else {
+                        pw.append(newTelephone2Field.getText());
+                        pw.append(";");
+                    }
                     
-                    if(c.getNumTel2().equals("null"))
+                    if(c.getNumTel3().equals("null")){
                         pw.append("null");
-                    else pw.append(newTelephone2Field.getText());
-                    
-                    if(c.getNumTel3().equals("null"))
-                        pw.append("null");
-                    else pw.append(newTelephone3Field.getText());                    
+                        pw.append(";");
+                    }   
+                    else{
+                        pw.append(newTelephone3Field.getText());
+                        pw.append(";");
+                    }                    
             }
         }
     }
@@ -179,37 +219,77 @@ public class NewContactViewController implements Initializable {
             
             pw.println("NOME;COGNOME;EMAIL1;EMAIL2;EMAIL3;NUMERO DI TELEFONO1; NUMERO DI TELEFONO2; NUMERO DI TELEFONO3");
             ///< Scrittura delle informazioni nel file esterno.
-                    if(c.getNome().equals("null"))
+                    if(c.getNome().equals("null")){
                         pw.append("null");
-                    else pw.append(newNameField.getText());
+                        pw.append(";");
+                    }
+                    else{
+                        pw.append(newNameField.getText());
+                        pw.append(";");
+                    }
+
+                    if(c.getCognome().equals("null")){
+                        pw.append("null");
+                        pw.append(";");
+                    }
+                    else{
+                        pw.append(newSurnameField.getText());
+                        pw.append(";");
+                    }
                     
-                    if(c.getCognome().equals("null"))
+                    if(c.getEmail1().equals("null")){
                         pw.append("null");
-                    else pw.append(newSurnameField.getText());
+                        pw.append(";");
+                    }
+                    else {
+                        pw.append(newEmail1Field.getText());
+                        pw.append(";");
+                    }
                     
-                    if(c.getEmail1().equals("null"))
+                    if(c.getEmail2().equals("null")){
                         pw.append("null");
-                    else pw.append(newEmail1Field.getText());
+                        pw.append(";");
+                    }   
+                    else {
+                        pw.append(newEmail2Field.getText());
+                        pw.append(";");
+                    }
                     
-                    if(c.getEmail2().equals("null"))
+                    if(c.getEmail3().equals("null")){
                         pw.append("null");
-                    else pw.append(newEmail2Field.getText());
+                        pw.append(";");
+                    }   
+                    else {
+                        pw.append(newEmail3Field.getText());
+                        pw.append(";");
+                    }                                                                                                                              
                     
-                    if(c.getEmail3().equals("null"))
+                    if(c.getNumTel1().equals("null")){
                         pw.append("null");
-                    else pw.append(newEmail3Field.getText());                                                                                                                              
+                        pw.append(";");
+                    } 
+                    else{
+                        pw.append(newTelephone1Field.getText());
+                        pw.append(";");
+                    }
                     
-                    if(c.getNumTel1().equals("null"))
+                    if(c.getNumTel2().equals("null")){
                         pw.append("null");
-                    else pw.append(newTelephone1Field.getText());
+                        pw.append(";");
+                    }   
+                    else {
+                        pw.append(newTelephone2Field.getText());
+                        pw.append(";");
+                    }
                     
-                    if(c.getNumTel2().equals("null"))
+                    if(c.getNumTel3().equals("null")){
                         pw.append("null");
-                    else pw.append(newTelephone2Field.getText());
-                    
-                    if(c.getNumTel3().equals("null"))
-                        pw.append("null");
-                    else pw.append(newTelephone3Field.getText());                    
+                        pw.append(";");
+                    }   
+                    else{
+                        pw.append(newTelephone3Field.getText());
+                        pw.append(";");
+                    }                    
         }
     }
     
