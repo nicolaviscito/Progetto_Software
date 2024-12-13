@@ -110,7 +110,7 @@ public class NewContactViewController implements Initializable {
             elencoContatti.aggiungiContatto(c);
         
             ///< Modifica del file esterno: aggiuta delle informazioni del nuovo contatto.
-            salvaContattiInfoCSV();
+            salvaContattoInfoCSV(c);
         
             ///< chiusura dell'interfaccia corrente "NewContactView" e apertura dell'interfaccia "RubricaView".
             UtilityClass.stage.close();
@@ -138,6 +138,46 @@ public class NewContactViewController implements Initializable {
             
             ///< Scrittura delle informazioni nel file esterno.
             for(Contatto c : elencoContatti.getElencoContatti()){
+                    if(c.getNome().equals("null"))
+                        pw.append("");
+                    else pw.append(newNameField.getText());
+                    
+                    if(c.getCognome().equals("null"))
+                        pw.append("");
+                    else pw.append(newSurnameField.getText());
+                    
+                    if(c.getEmail1().equals("null"))
+                        pw.append("");
+                    else pw.append(newEmail1Field.getText());
+                    
+                    if(c.getEmail2().equals("null"))
+                        pw.append("");
+                    else pw.append(newEmail2Field.getText());
+                    
+                    if(c.getEmail3().equals("null"))
+                        pw.append("");
+                    else pw.append(newEmail3Field.getText());                                                                                                                              
+                    
+                    if(c.getNumTel1().equals("null"))
+                        pw.append("");
+                    else pw.append(newTelephone1Field.getText());
+                    
+                    if(c.getNumTel2().equals("null"))
+                        pw.append("");
+                    else pw.append(newTelephone2Field.getText());
+                    
+                    if(c.getNumTel3().equals("null"))
+                        pw.append("");
+                    else pw.append(newTelephone3Field.getText());                    
+            }
+        }
+    }
+    
+    public void salvaContattoInfoCSV(Contatto c) throws IOException{
+        ///< Istanziamento di due oggetti "PrintWriter", "BufferedWriter" e "FileWriter" per la scrittura sul file "ElencoContatti.csv".
+        try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(UtilityClass.username + ".csv")))){
+            
+            ///< Scrittura delle informazioni nel file esterno.
                     if(c.getNome().equals("null"))
                         newNameField.setText("");
                     else newNameField.setText(c.getNome());
@@ -169,7 +209,6 @@ public class NewContactViewController implements Initializable {
                     if(c.getEmail3().equals("null"))
                         newTelephone3Field.setText("");
                     else newTelephone3Field.setText(c.getEmail3());                    
-            }
         }
     }
     
