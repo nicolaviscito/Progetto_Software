@@ -139,35 +139,35 @@ public class NewContactViewController implements Initializable {
             ///< Scrittura delle informazioni nel file esterno.
             for(Contatto c : elencoContatti.getElencoContatti()){
                     if(c.getNome().equals("null"))
-                        pw.append("");
+                        pw.append("null");
                     else pw.append(newNameField.getText());
                     
                     if(c.getCognome().equals("null"))
-                        pw.append("");
+                        pw.append("null");
                     else pw.append(newSurnameField.getText());
                     
                     if(c.getEmail1().equals("null"))
-                        pw.append("");
+                        pw.append("null");
                     else pw.append(newEmail1Field.getText());
                     
                     if(c.getEmail2().equals("null"))
-                        pw.append("");
+                        pw.append("null");
                     else pw.append(newEmail2Field.getText());
                     
                     if(c.getEmail3().equals("null"))
-                        pw.append("");
+                        pw.append("null");
                     else pw.append(newEmail3Field.getText());                                                                                                                              
                     
                     if(c.getNumTel1().equals("null"))
-                        pw.append("");
+                        pw.append("null");
                     else pw.append(newTelephone1Field.getText());
                     
                     if(c.getNumTel2().equals("null"))
-                        pw.append("");
+                        pw.append("null");
                     else pw.append(newTelephone2Field.getText());
                     
                     if(c.getNumTel3().equals("null"))
-                        pw.append("");
+                        pw.append("null");
                     else pw.append(newTelephone3Field.getText());                    
             }
         }
@@ -177,38 +177,39 @@ public class NewContactViewController implements Initializable {
         ///< Istanziamento di due oggetti "PrintWriter", "BufferedWriter" e "FileWriter" per la scrittura sul file "ElencoContatti.csv".
         try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(UtilityClass.username + ".csv")))){
             
+            pw.println("NOME;COGNOME;EMAIL1;EMAIL2;EMAIL3;NUMERO DI TELEFONO1; NUMERO DI TELEFONO2; NUMERO DI TELEFONO3");
             ///< Scrittura delle informazioni nel file esterno.
                     if(c.getNome().equals("null"))
-                        newNameField.setText("");
-                    else newNameField.setText(c.getNome());
+                        pw.append("null");
+                    else pw.append(newNameField.getText());
                     
                     if(c.getCognome().equals("null"))
-                        newSurnameField.setText("");
-                    else newSurnameField.setText(c.getCognome());
-                    
-                    if(c.getNumTel1().equals("null"))
-                        newEmail1Field.setText("");
-                    else newEmail1Field.setText(c.getNumTel1());
-                    
-                    if(c.getNumTel2().equals("null"))
-                        newEmail2Field.setText("");
-                    else newEmail2Field.setText(c.getNumTel2());
-                    
-                    if(c.getNumTel3().equals("null"))
-                        newEmail3Field.setText("");
-                    else newEmail3Field.setText(c.getNumTel3());                                                                                                                              
+                        pw.append("null");
+                    else pw.append(newSurnameField.getText());
                     
                     if(c.getEmail1().equals("null"))
-                        newTelephone1Field.setText("");
-                    else newTelephone1Field.setText(c.getEmail1());
+                        pw.append("null");
+                    else pw.append(newEmail1Field.getText());
                     
                     if(c.getEmail2().equals("null"))
-                        newTelephone2Field.setText("");
-                    else newTelephone2Field.setText(c.getEmail2());
+                        pw.append("null");
+                    else pw.append(newEmail2Field.getText());
                     
                     if(c.getEmail3().equals("null"))
-                        newTelephone3Field.setText("");
-                    else newTelephone3Field.setText(c.getEmail3());                    
+                        pw.append("null");
+                    else pw.append(newEmail3Field.getText());                                                                                                                              
+                    
+                    if(c.getNumTel1().equals("null"))
+                        pw.append("null");
+                    else pw.append(newTelephone1Field.getText());
+                    
+                    if(c.getNumTel2().equals("null"))
+                        pw.append("null");
+                    else pw.append(newTelephone2Field.getText());
+                    
+                    if(c.getNumTel3().equals("null"))
+                        pw.append("null");
+                    else pw.append(newTelephone3Field.getText());                    
         }
     }
     
