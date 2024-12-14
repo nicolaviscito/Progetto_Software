@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="main.java.com.mycompany.ingegneriasoftware">
+  <ClassDiagramComponents>
+    <Class name="App" package="com.mycompany.ingegneriasoftware" visibility="public" xPosition="63.0" yPosition="191.0">
+      <Fields>
+        <Field name="scene" type="Scene" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="start" returnType="void" visibility="public">
+          <Argument type="Stage" name="stage"/>
+        </Method>
+        <Method name="setRoot" returnType="void" visibility="package" isStatic="true">
+          <Argument type="String" name="fxml"/>
+        </Method>
+        <Method name="loadFXML" returnType="Parent" visibility="public" isStatic="true">
+          <Argument type="String" name="fxml"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="LoginViewController" package="com.mycompany.ingegneriasoftware" visibility="public" xPosition="451.0" yPosition="68.0">
+      <Fields>
+        <Field name="passwordField" type="PasswordField" visibility="package"/>
+        <Field name="usernameField" type="TextField" visibility="package"/>
+        <Field name="errorLabel" type="Label" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="initialize" returnType="void" visibility="public">
+          <Argument type="URL" name="url"/>
+          <Argument type="ResourceBundle" name="rb"/>
+        </Method>
+        <Method name="openMailView" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+        <Method name="openSignUpView" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ModifyContactViewController" package="com.mycompany.ingegneriasoftware" visibility="public" xPosition="87.0" yPosition="475.0">
+      <Fields>
+        <Field name="controllerRubrica" type="RubricaViewController" visibility="private"/>
+        <Field name="selectionedContact" type="Contatto" visibility="private"/>
+        <Field name="newSurnameField" type="TextField" visibility="private"/>
+        <Field name="newNameField" type="TextField" visibility="private"/>
+        <Field name="newTelephone1Field" type="TextField" visibility="private"/>
+        <Field name="newTelephone2Field" type="TextField" visibility="private"/>
+        <Field name="newTelephone3Field" type="TextField" visibility="private"/>
+        <Field name="newEmail1Field" type="TextField" visibility="private"/>
+        <Field name="newEmail2Field" type="TextField" visibility="private"/>
+        <Field name="newEmail3Field" type="TextField" visibility="private"/>
+        <Field name="modifyButton" type="Button" visibility="private"/>
+        <Field name="errorLabel" type="Label" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="initialize" returnType="void" visibility="public">
+          <Argument type="URL" name="url"/>
+          <Argument type="ResourceBundle" name="rb"/>
+        </Method>
+        <Method name="modifyContact" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ModifyUserViewController" package="com.mycompany.ingegneriasoftware" visibility="public" xPosition="1291.0" yPosition="213.0">
+      <Fields>
+        <Field name="controller" type="SignUpViewController" visibility="private"/>
+        <Field name="newSurnameField" type="TextField" visibility="private"/>
+        <Field name="newNameField" type="TextField" visibility="private"/>
+        <Field name="modifyProfileButton" type="Button" visibility="private"/>
+        <Field name="newEmailField" type="TextField" visibility="private"/>
+        <Field name="newPasswordField" type="TextField" visibility="private"/>
+        <Field name="newUsernameField" type="TextField" visibility="private"/>
+        <Field name="newTelephoneField" type="TextField" visibility="private"/>
+        <Field name="BackButton" type="Button" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="initialize" returnType="void" visibility="public">
+          <Argument type="URL" name="url"/>
+          <Argument type="ResourceBundle" name="rb"/>
+        </Method>
+        <Method name="modifyProfile" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+        <Method name="goBack" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="NewContactViewController" package="com.mycompany.ingegneriasoftware" visibility="public" xPosition="1175.0" yPosition="669.0">
+      <Fields>
+        <Field name="newNameField" type="TextField" visibility="private"/>
+        <Field name="newTelephone1Field" type="TextField" visibility="private"/>
+        <Field name="newTelephone2Field" type="TextField" visibility="private"/>
+        <Field name="newTelephone3Field" type="TextField" visibility="private"/>
+        <Field name="newEmail3Field" type="TextField" visibility="private"/>
+        <Field name="newEmail2Field" type="TextField" visibility="private"/>
+        <Field name="newEmail1Field" type="TextField" visibility="private"/>
+        <Field name="newSurnameField" type="TextField" visibility="private"/>
+        <Field name="createContactButton" type="Button" visibility="private"/>
+        <Field name="errorLabel" type="Label" visibility="private"/>
+        <Field name="BackButton" type="Button" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="initialize" returnType="void" visibility="public">
+          <Argument type="URL" name="url"/>
+          <Argument type="ResourceBundle" name="rb"/>
+        </Method>
+        <Method name="newCreateContact" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+        <Method name="goBack" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ProfileViewController" package="com.mycompany.ingegneriasoftware" visibility="public" xPosition="820.0" yPosition="977.0">
+      <Fields>
+        <Field name="profileSurname" type="Label" visibility="private"/>
+        <Field name="profilePhone" type="Label" visibility="private"/>
+        <Field name="profileEmail" type="Label" visibility="private"/>
+        <Field name="profileUsername" type="Label" visibility="private"/>
+        <Field name="profilePassword" type="Label" visibility="private"/>
+        <Field name="profileName" type="Label" visibility="private"/>
+        <Field name="modifyProfileButton" type="Button" visibility="private"/>
+        <Field name="deleteProfileButton" type="Button" visibility="private"/>
+        <Field name="BackButton" type="Button" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="initialize" returnType="void" visibility="public">
+          <Argument type="URL" name="url"/>
+          <Argument type="ResourceBundle" name="rb"/>
+        </Method>
+        <Method name="modifyProfile" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+        <Method name="deleteProfile" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+        <Method name="goBack" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="RubricaViewController" package="com.mycompany.ingegneriasoftware" visibility="public" xPosition="588.0" yPosition="403.0">
+      <Fields>
+        <Field name="elencoContattiOsservabile" type="ObservableList&lt;Contatto&gt;" visibility="private"/>
+        <Field name="searchField" type="TextField" visibility="private"/>
+        <Field name="nameLabel" type="Label" visibility="private"/>
+        <Field name="phoneLabel1" type="Label" visibility="private"/>
+        <Field name="phoneLabel2" type="Label" visibility="private"/>
+        <Field name="phoneLabel3" type="Label" visibility="private"/>
+        <Field name="surnameLabel" type="Label" visibility="private"/>
+        <Field name="mailLabel1" type="Label" visibility="private"/>
+        <Field name="mailLabel2" type="Label" visibility="private"/>
+        <Field name="mailLabel3" type="Label" visibility="private"/>
+        <Field name="delateButton" type="Button" visibility="private"/>
+        <Field name="modifyButton" type="Button" visibility="private"/>
+        <Field name="contactColumn" type="TableColumn&lt;Contatto, String&gt;" visibility="private"/>
+        <Field name="newContactButton" type="Button" visibility="private"/>
+        <Field name="profileButton" type="Button" visibility="private"/>
+        <Field name="contactBox" type="TableView&lt;Contatto&gt;" visibility="private"/>
+        <Field name="infoPanel" type="Pane" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="initialize" returnType="void" visibility="public">
+          <Argument type="URL" name="url"/>
+          <Argument type="ResourceBundle" name="rb"/>
+        </Method>
+        <Method name="deleteContact" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+        <Method name="modifyContact" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+        <Method name="openNewContactView" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+        <Method name="openProfileView" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+        <Method name="openContactView" returnType="void" visibility="private">
+          <Argument type="MouseEvent" name="event"/>
+        </Method>
+        <Method name="getSelectionedContact" returnType="Contatto" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="SignUpViewController" package="com.mycompany.ingegneriasoftware" visibility="public" xPosition="831.0" yPosition="52.0">
+      <Fields>
+        <Field name="confirmButton" type="Button" visibility="private"/>
+        <Field name="nameField" type="TextField" visibility="private"/>
+        <Field name="usernameField" type="TextField" visibility="private"/>
+        <Field name="surnameField" type="TextField" visibility="private"/>
+        <Field name="passwordField" type="PasswordField" visibility="private"/>
+        <Field name="phoneField" type="TextField" visibility="private"/>
+        <Field name="mailField" type="TextField" visibility="private"/>
+        <Field name="errorLabel" type="Label" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="initialize" returnType="void" visibility="public">
+          <Argument type="URL" name="url"/>
+          <Argument type="ResourceBundle" name="rb"/>
+        </Method>
+        <Method name="openMailView" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+        <Method name="RegistraUtente" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="UtilityClass" package="com.mycompany.ingegneriasoftware" visibility="public" xPosition="287.0" yPosition="1031.0">
+      <Fields>
+        <Field name="stage" type="Stage" visibility="public" isStatic="true"/>
+        <Field name="username" type="String" visibility="public" isStatic="true"/>
+        <Field name="elencoUtenti" type="ElencoUtenti" visibility="public" isStatic="true"/>
+        <Field name="elencoContatti" type="ElencoContatti" visibility="public" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="openNewStage" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Scene" name="scene"/>
+        </Method>
+        <Method name="leggiUserInfoCSV" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="salvaUserInfoCSV" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Utente" name="u"/>
+        </Method>
+        <Method name="salvaContattoInfoCSV" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Contatto" name="c"/>
+        </Method>
+        <Method name="leggiContattiInfoCSV" returnType="ElencoContatti" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation name="use" source="com.mycompany.ingegneriasoftware.App" target="com.mycompany.ingegneriasoftware.LoginViewController" sourceCardinality="1..1" targetCardinality="1..*"/>
+    <UseRelation name="use" source="com.mycompany.ingegneriasoftware.LoginViewController" target="com.mycompany.ingegneriasoftware.SignUpViewController" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="controller" source="com.mycompany.ingegneriasoftware.ModifyUserViewController" target="com.mycompany.ingegneriasoftware.SignUpViewController" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="use" source="com.mycompany.ingegneriasoftware.RubricaViewController" target="com.mycompany.ingegneriasoftware.ModifyContactViewController" sourceCardinality="1..1" targetCardinality="1..*"/>
+    <HasRelation name="controllerRubrica" source="com.mycompany.ingegneriasoftware.ModifyContactViewController" target="com.mycompany.ingegneriasoftware.RubricaViewController" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="use" source="com.mycompany.ingegneriasoftware.RubricaViewController" target="com.mycompany.ingegneriasoftware.NewContactViewController" sourceCardinality="1..1" targetCardinality="1..*"/>
+    <UseRelation name="use" source="com.mycompany.ingegneriasoftware.SignUpViewController" target="com.mycompany.ingegneriasoftware.RubricaViewController" sourceCardinality="1..1" targetCardinality="1..*"/>
+    <UseRelation name="use" source="com.mycompany.ingegneriasoftware.LoginViewController" target="com.mycompany.ingegneriasoftware.RubricaViewController" sourceCardinality="1..1" targetCardinality="1..*"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

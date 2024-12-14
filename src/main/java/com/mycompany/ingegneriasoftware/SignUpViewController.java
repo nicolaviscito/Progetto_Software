@@ -35,6 +35,8 @@ import utenteContatto.Utente;
  * @date December 07, 2024.
  */
 public class SignUpViewController implements Initializable {
+    
+    ///< Attributi per l'interfaccia grafica della registrazione utente ideati e scritti da Giuseppe Messalino.
     @FXML
     private Button confirmButton;
     @FXML
@@ -73,7 +75,7 @@ public class SignUpViewController implements Initializable {
     }    
 
     /**
-     * @brief Metodo per la gestione dell'interfaccia di registrazione utente
+     * @brief Metodo per la gestione dell'interfaccia di registrazione utente.
      * 
      * Questo metodo gestisce la scrittura del file esterno "ElencoUtenti.csv" e la chiusura dell'interfaccia di registrazione utente "SignUpView".
      * 
@@ -104,18 +106,18 @@ public class SignUpViewController implements Initializable {
      * @param[in] Il metodo non usa nessun parametro in ingresso.
      * @return Nessun valore di ritorno.
      * 
-     * @author Nicola Viscito.
+     * @author Nicola Viscito, Giuseppe Messalino.
      * @throws IOException 
      */
     
     public boolean RegistraUtente() throws IOException{
-        /*for(Utente ut : UtilityClass.elencoUtenti.getListaUtenti()){
+        for(Utente ut : UtilityClass.elencoUtenti.getListaUtenti()){
             if(ut.getUsername().equals(usernameField.getText())){
                 errorLabel.setTextFill(Color.RED);
                 errorLabel.setText("L'username inserito è già in uso.");
                 return false;
             }
-             else{*/
+             else{
                 ///< Creazione del nuovo utente, a cui passiamo i parametri presi dai TextFields dell'interfaccia di registrazione utente "SignUpView".
                 Utente u = new  Utente(nameField.getText(), 
                                 surnameField.getText(), 
@@ -128,10 +130,9 @@ public class SignUpViewController implements Initializable {
                 ///< Modifica del file esterno: aggiuta delle informazioni del nuovo utente.
                 UtilityClass.salvaUserInfoCSV(u);
                 return true;
-        //    }
-       // }
-        
-
-
+            }
+        }
+        return false;
     }
 }
+        

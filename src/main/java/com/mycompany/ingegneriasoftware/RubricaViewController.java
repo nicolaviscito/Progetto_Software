@@ -43,6 +43,13 @@ import utenteContatto.Contatto;
 public class RubricaViewController implements Initializable {
     private ObservableList<Contatto> elencoContattiOsservabile = FXCollections.observableArrayList();
     public static String selectionedName;
+    public static String selectionedSurname;
+    public static String selectionedEmail1;
+    public static String selectionedEmail2;
+    public static String selectionedEmail3;
+    public static String selectionedPhone1;
+    public static String selectionedPhone2;
+    public static String selectionedPhone3;
     @FXML
     private TextField searchField;
     @FXML
@@ -94,6 +101,7 @@ public class RubricaViewController implements Initializable {
             data.add(c);
         }
         
+        ///< Sorting della rubrica: in ordine alfabetico (per cognome e poi nome).
         data.sort(Comparator.comparing(Contatto :: getCognome).thenComparing(Contatto :: getNome));
         
     
@@ -150,7 +158,7 @@ public class RubricaViewController implements Initializable {
         
         ///< Riscrittura del file esterno.
         try (PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(UtilityClass.username + ".csv")))) {
-            for (Contatto contatto : elencoContattiOsservabile) {
+            for (Contatto contatto : UtilityClass.elencoContatti.getElencoContatti()) {
                 pw.append(contatto.getNome().isEmpty() ? "null" : contatto.getNome()).append(";");
                 pw.append(contatto.getCognome().isEmpty() ? "null" : contatto.getCognome()).append(";");
                 pw.append(contatto.getEmail1().isEmpty() ? "null" : contatto.getEmail1()).append(";");
@@ -164,18 +172,45 @@ public class RubricaViewController implements Initializable {
         }
     }
     
+    /**
+     * @brief Metodo di apertura interfaccia di registrazione utente "ModifyContactView".
+     *  
+     * @param[in] event Il metodo prende in ingresso l'evento di pressione del tasto "Modifica".  
+     * @return Nessun valore di ritorno.
+     * 
+     * @author Nicola Viscito.
+     * @throws IOException 
+     */
     @FXML
     private void modifyContact(ActionEvent event) throws IOException {
         UtilityClass.stage.close();
         UtilityClass.openNewStage(new Scene(App.loadFXML("ModifyContactView")));
     }
 
+    /**
+     * @brief Metodo di apertura interfaccia di registrazione utente "NewContactView".
+     *  
+     * @param[in] event Il metodo prende in ingresso l'evento di pressione del tasto "Crea Contatto".  
+     * @return Nessun valore di ritorno.
+     * 
+     * @author Giuseppe Messalino.
+     * @throws IOException 
+     */
     @FXML
     private void openNewContactView(ActionEvent event) throws IOException {
         UtilityClass.stage.close();
         UtilityClass.openNewStage(new Scene(App.loadFXML("NewContactView")));
     }
 
+    /**
+     * @brief Metodo di apertura interfaccia di registrazione utente "ProfileView".
+     *  
+     * @param[in] event Il metodo prende in ingresso l'evento di pressione del tasto "Profilo".  
+     * @return Nessun valore di ritorno.
+     * 
+     * @author Giuseppe Messalino.
+     * @throws IOException 
+     */
     @FXML
     private void openProfileView(ActionEvent event) throws IOException {
         UtilityClass.stage.close();
@@ -237,13 +272,4 @@ public class RubricaViewController implements Initializable {
             }             
         }
     }
-    
-    /**
-     * @brief Metodo per ottenere il riferimento del contatto selezionato nella rubrica.
-     * 
-     * @param[in] Il metodo non ha nessun parametro in ingresso.
-     * @return Il metodo restituisce il contatto selezionato nell'interfaccia della rubrica.
-     * 
-     * @author Nicola Viscito.
-     */
 }

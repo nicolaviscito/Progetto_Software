@@ -24,6 +24,12 @@ public class Contatto {
     private String numTel1;
     private String numTel2;
     private String numTel3;
+    /**
+     * @brief Costruttore senza parametri
+     */
+    public Contatto(){
+        
+    }
     
     /**
      * @brief Costruttore: inizializza tutti gli attributi.

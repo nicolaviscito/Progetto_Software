@@ -28,7 +28,7 @@ import utenteContatto.Utente;
  * Questa classe si occupa di gestire tutte le interazioni possibili che l'utente può avere con l'interfaccia grafica
  * che gestisce la la visualizzazione del profilo.
  *
- * @author Nicola Viscito e Giuseppe Messalino.
+ * @author Nicola Viscito Giuseppe Messalino, Paolo Vitale.
  * @date December 10, 2024.
  */
 public class ProfileViewController implements Initializable {
@@ -57,7 +57,6 @@ public class ProfileViewController implements Initializable {
      * Initializes the controller class.
      * @param url
      * @param rb
-     * @throws java.io.IOException
      */
     @Override
     public void initialize(URL url, ResourceBundle rb){
@@ -73,7 +72,15 @@ public class ProfileViewController implements Initializable {
         }
     }    
     
-    
+    /**
+     * @brief Metodo di apertura dell'interfaccia "ModifyUserView" per permettere all'utente di modificare il proprio profilo.
+     * 
+     * @param[in] event Il metodo prende in ingresso l'evento di pressione del bottone "Modifica Profilo".
+     * @return Nessun valore di ritorno.
+     * 
+     * @author Giuseppe Messalino.
+     * @throws IOException 
+     */
     @FXML
     private void modifyProfile(ActionEvent event) throws IOException {
         UtilityClass.stage.close();
@@ -103,7 +110,7 @@ public class ProfileViewController implements Initializable {
                 u.getEmail().equals(profileEmail.getText()) &&
                 u.getNumtel().equals(profilePhone.getText())) {
                 utenteDaEliminare = u;  ///< Assegnazione dell'utente da eliminare in una variabile d'appoggio.
-                break; // Esci dal ciclo dopo aver trovato il contatto
+                break; // Esci dal ciclo dopo aver trovato l'utente
             }
         }
         
@@ -113,7 +120,7 @@ public class ProfileViewController implements Initializable {
         }
         
         ///< Riscrittura del file esterno.
-        try (PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(UtilityClass.username + ".csv")))) {
+        try (PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("ElencoUtenti.csv")))) {
             for (Utente utente : UtilityClass.elencoUtenti.getListaUtenti()) {
                 pw.append(utente.getName().isEmpty() ? "null" : utente.getName()).append(";");
                 pw.append(utente.getSurname().isEmpty() ? "null" : utente.getSurname()).append(";");
@@ -124,8 +131,21 @@ public class ProfileViewController implements Initializable {
                 pw.append('\n');
             }
         }
+        
+        ///< Chiusura dell'interfaccia corrente e apertura dell'interfaccia "LoginView".
+        UtilityClass.stage.close();
+        UtilityClass.openNewStage(new Scene(App.loadFXML("LoginView")));
     }
 
+    /**
+     * @brief Metodo per tornare all'interfaccia precedente: "RubricaView".
+     *  
+     * @param[in] event Il metodo prende in ingresso l'evento di pressione del bottone che indica una freccia che torna indietro.  
+     * @return Nessun valore di ritorno.
+     * 
+     * @author Paolo Vitale.
+     * @throws IOException 
+     */
     @FXML
     private void goBack(ActionEvent event) throws IOException {
         UtilityClass.stage.close();

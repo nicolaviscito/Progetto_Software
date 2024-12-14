@@ -26,7 +26,7 @@ import utenteContatto.Utente;
  * Questa classe si occupa di gestire tutte le interazioni possibili che l'utente può avere con l'interfaccia grafica
  * che gestisce l'accesso dell'utente.
  *
- * @author Nicola Viscito e Giuseppe Messalino.
+ * @author Nicola Viscito e Giuseppe Messalino, Paolo Vitale.
  * @date December 07, 2024.
  */
 public class LoginViewController implements Initializable {
@@ -90,6 +90,15 @@ public class LoginViewController implements Initializable {
         }
     }
 
+    /**
+     * @brief Metodo di apertura interfaccia di registrazione utente "SignUpView".
+     *  
+     * @param[in] event Il metodo prende in ingresso l'evento di pressione del tasto "SignUp".  
+     * @return Nessun valore di ritorno.
+     * 
+     * @author Paolo Vitale.
+     * @throws IOException 
+     */
     @FXML
     private void openSignUpView(ActionEvent event) throws IOException {
         UtilityClass.stage.close();

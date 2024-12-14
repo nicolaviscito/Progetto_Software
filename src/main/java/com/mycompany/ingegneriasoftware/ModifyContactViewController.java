@@ -25,15 +25,31 @@ import utenteContatto.ElencoContatti;
 import utenteContatto.Utente;
 
 /**
- * FXML Controller class
- *
- * @author bvisc
+ * @file ModifyContactViewController.java
+ * @brief Questa classe implementa l'interfaccia di modifica del contatto.
+ * 
+ * Questa classe si occupa di gestire tutte le interazioni possibili che l'utente può avere con l'interfaccia grafica
+ * che gestisce la modifica del contatto.
+ * 
+ * @author Nicola Viscito e Giuseppe Messalino, Paolo Vitale.
+ * @date December 11, 2024.
  */
 public class ModifyContactViewController implements Initializable {
     
     private RubricaViewController controllerRubrica = new RubricaViewController();
     
-    private String selectionedContact;
+    /**
+     * Attributi per l'interfaccia grafica della modifica del contatto e del contatto selezionato dalla rubrica,
+     * nell'interfaccia "RubricaView", ideati e scritti da Giuseppe Messalino e Paolo Vitale.
+     */
+    private String selectionedContactName;
+    public String selectionedContactSurname;
+    public String selectionedContactEmail1;
+    public String selectionedContactEmail2;
+    public String selectionedContactEmail3;
+    public String selectionedContactTelephone1;
+    public String selectionedContactTelephone2;
+    public String selectionedContactTelephone3;
     @FXML
     private TextField newSurnameField;
     @FXML
@@ -61,14 +77,31 @@ public class ModifyContactViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        selectionedContact = RubricaViewController.selectionedName;
+        selectionedContactName = RubricaViewController.selectionedName;
     }   
 
+    /**
+     * @brief Il metodo implementa la modifica di un contatto.
+     * 
+     * Questo metodo cerca nella lista di contatti corrispodente all'utente che ha fatto l'accesso, il contatto selezionato e, 
+     * se è stata apportata qualche modifica, modifica il contatto, sia nel file esterno sia nella lista osservabile, per poi 
+     * ritornare all'interfaccia "Rubrica View" per poter visualizzare le modifiche.
+     * 
+     * @param[in] event Il metodo prende in ingresso l'evento di pressione del tasto "Modifica".  
+     * @return Nessun valore di ritorno.
+     * 
+     * @author Nicola Viscito.
+     * @throws IOException 
+     */
     @FXML
     private void modifyContact(ActionEvent event) throws IOException {
+        
+        ///< Variabile booleana che serve per verificare se è stata effettuata una modfica a uno degli attributi del contatto selezionato.
         boolean modificaEffettuata = false;
-        for(Contatto c : UtilityClass.leggiContattiInfoCSV().getElencoContatti()){
-            if(selectionedContact.equals(c.getNome())){
+        
+        ///< Ricerca del contatto selezionato nella lista di contatti, con le conseguenti modifiche.
+        for(Contatto c : UtilityClass.elencoContatti.getElencoContatti()){
+            if((selectionedContactName.equals(c.getNome()))){
                 if(!newNameField.getText().isEmpty()){
                     c.setNome(newNameField.getText());
                     modificaEffettuata = true;
@@ -105,8 +138,9 @@ public class ModifyContactViewController implements Initializable {
             }
         }
         
+        ///< Prima di riscrivere tutto il file esterno si controlla se ci sono state delle modifiche.
         if(modificaEffettuata){
-            ///< Riscrivi il file CSV con tutti i contatti aggiornati
+            ///< Riscrittura del file CSV con tutti i contatti aggiornati
             try (PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(UtilityClass.username + ".csv")))) {
                 for (Contatto contatto : UtilityClass.elencoContatti.getElencoContatti()) {
                     pw.append(contatto.getNome().isEmpty() ? "null" : contatto.getNome()).append(";");
@@ -121,6 +155,8 @@ public class ModifyContactViewController implements Initializable {
                 }
             }
         }
+        
+        ///< Ritorno all'interfaccia "RubricaView".
         UtilityClass.elencoContatti = UtilityClass.leggiContattiInfoCSV();
         UtilityClass.stage.close();
         UtilityClass.openNewStage(new Scene(App.loadFXML("RubricaView")));

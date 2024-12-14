@@ -22,7 +22,13 @@ public class Utente {
     private String password;
     private String email;
     private String numtel;
-
+    
+    /**
+     * @brief Costruttore senza paramteri.
+     */
+    public Utente(){
+        
+    }
     /**
      * @brief Costruttore: inizializza tutti gli attributi.
      * 

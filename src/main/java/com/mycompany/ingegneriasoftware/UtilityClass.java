@@ -24,7 +24,7 @@ import utenteContatto.Utente;
  * @brief Classe in cui sono riportati e implementati i metodi che vengono usati più spessso.
  * 
  * @author Nicola Viscito, Giuseppe Messalino, Poalo Vitale.
- * @date December 13, 2024.
+ * @date December 10, 2024.
  */
 public class UtilityClass {
     public static Stage stage;

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="main.java.utenteContatto">
+  <ClassDiagramComponents>
+    <Class name="Contatto" package="utenteContatto" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="nome" type="String" visibility="private"/>
+        <Field name="cognome" type="String" visibility="private"/>
+        <Field name="email1" type="String" visibility="private"/>
+        <Field name="email2" type="String" visibility="private"/>
+        <Field name="email3" type="String" visibility="private"/>
+        <Field name="numTel1" type="String" visibility="private"/>
+        <Field name="numTel2" type="String" visibility="private"/>
+        <Field name="numTel3" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="nome"/>
+          <Argument type="String" name="cognome"/>
+          <Argument type="String" name="email1"/>
+          <Argument type="String" name="email2"/>
+          <Argument type="String" name="email3"/>
+          <Argument type="String" name="numTel1"/>
+          <Argument type="String" name="numTel2"/>
+          <Argument type="String" name="numTel3"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="setNome" returnType="void" visibility="public">
+          <Argument type="String" name="nome"/>
+        </Method>
+        <Method name="setCognome" returnType="void" visibility="public">
+          <Argument type="String" name="cognome"/>
+        </Method>
+        <Method name="getNome" returnType="String" visibility="public"/>
+        <Method name="getCognome" returnType="String" visibility="public"/>
+        <Method name="getEmail1" returnType="String" visibility="public"/>
+        <Method name="getEmail2" returnType="String" visibility="public"/>
+        <Method name="getEmail3" returnType="String" visibility="public"/>
+        <Method name="getNumTel1" returnType="String" visibility="public"/>
+        <Method name="getNumTel2" returnType="String" visibility="public"/>
+        <Method name="getNumTel3" returnType="String" visibility="public"/>
+        <Method name="setEmail1" returnType="void" visibility="public">
+          <Argument type="String" name="email1"/>
+        </Method>
+        <Method name="setEmail2" returnType="void" visibility="public">
+          <Argument type="String" name="email2"/>
+        </Method>
+        <Method name="setEmail3" returnType="void" visibility="public">
+          <Argument type="String" name="email3"/>
+        </Method>
+        <Method name="setNumTel1" returnType="void" visibility="public">
+          <Argument type="String" name="numTel1"/>
+        </Method>
+        <Method name="setNumTel2" returnType="void" visibility="public">
+          <Argument type="String" name="numTel2"/>
+        </Method>
+        <Method name="setNumTel3" returnType="void" visibility="public">
+          <Argument type="String" name="numTel3"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ElencoContatti" package="utenteContatto" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="elencoContatti" type="List&lt;Contatto&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getElencoContatti" returnType="List&lt;Contatto&gt;" visibility="public"/>
+        <Method name="aggiungiContatto" returnType="void" visibility="public">
+          <Argument type="Contatto" name="c"/>
+        </Method>
+        <Method name="removeContact" returnType="void" visibility="public">
+          <Argument type="Contatto" name="c"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ElencoUtenti" package="utenteContatto" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="elencoUtenti" type="List&lt;Utente&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getListaUtenti" returnType="List&lt;Utente&gt;" visibility="public"/>
+        <Method name="aggiungiUtente" returnType="void" visibility="public">
+          <Argument type="Utente" name="u"/>
+        </Method>
+        <Method name="removeUtente" returnType="void" visibility="public">
+          <Argument type="Utente" name="u"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Utente" package="utenteContatto" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="surname" type="String" visibility="private"/>
+        <Field name="username" type="String" visibility="private"/>
+        <Field name="password" type="String" visibility="private"/>
+        <Field name="email" type="String" visibility="private"/>
+        <Field name="numtel" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="surname"/>
+          <Argument type="String" name="username"/>
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="email"/>
+          <Argument type="String" name="numtel"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="getSurname" returnType="String" visibility="public"/>
+        <Method name="getUsername" returnType="String" visibility="public"/>
+        <Method name="getPassword" returnType="String" visibility="public"/>
+        <Method name="getEmail" returnType="String" visibility="public"/>
+        <Method name="getNumtel" returnType="String" visibility="public"/>
+        <Method name="setName" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="setSurname" returnType="void" visibility="public">
+          <Argument type="String" name="surname"/>
+        </Method>
+        <Method name="setUsername" returnType="void" visibility="public">
+          <Argument type="String" name="username"/>
+        </Method>
+        <Method name="setPassword" returnType="void" visibility="public">
+          <Argument type="String" name="password"/>
+        </Method>
+        <Method name="setEmail" returnType="void" visibility="public">
+          <Argument type="String" name="email"/>
+        </Method>
+        <Method name="setNumtel" returnType="void" visibility="public">
+          <Argument type="String" name="numtel"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="utenteContatto.ElencoContatti" target="utenteContatto.Contatto" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="utenteContatto.ElencoUtenti" target="utenteContatto.Utente" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="elencoContatti" source="utenteContatto.ElencoContatti" target="utenteContatto.Contatto" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Contatto&gt;"/>
+    <HasRelation name="elencoUtenti" source="utenteContatto.ElencoUtenti" target="utenteContatto.Utente" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Utente&gt;"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

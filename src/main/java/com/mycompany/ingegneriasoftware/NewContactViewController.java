@@ -24,7 +24,7 @@ import utenteContatto.Contatto;
  * Questa classe si occupa di gestire tutte le interazioni possibili che l'utente può avere con l'interfaccia grafica
  * che gestisce la creazione del contatto.
  *
- * @author Nicola Viscito.
+ * @author Nicola Viscito e Giuseppe Messalino, Paolo Vitale.
  * @date December 09, 2024.
  */
 public class NewContactViewController implements Initializable {
@@ -76,7 +76,7 @@ public class NewContactViewController implements Initializable {
     private void newCreateContact(ActionEvent event) throws IOException {
         if(newNameField.getText().isEmpty() && newSurnameField.getText().isEmpty()){
      
-            ///< Label di errore che viene mostrata se tutti e due i campi non sono stati riempiti.
+            ///< Label di errore che viene mostrata se almeno uno dei due campi non è stato riempito.
             errorLabel.setTextFill(Color.RED);
             errorLabel.setText("Inserire almeno un nome o un cognome.");
         }
@@ -96,17 +96,27 @@ public class NewContactViewController implements Initializable {
             
             ///< Aggiunta del contatto appena creato alla lista dei contatti.
             UtilityClass.elencoContatti.aggiungiContatto(c);
+            
             ///< Modifica del file esterno: aggiuta delle informazioni del nuovo contatto.
             UtilityClass.salvaContattoInfoCSV(c);
             UtilityClass.elencoContatti = UtilityClass.leggiContattiInfoCSV();
             
-            ///< chiusura dell'interfaccia corrente "NewContactView" e apertura dell'interfaccia "RubricaView".
+            ///< Chiusura dell'interfaccia corrente "NewContactView" e apertura dell'interfaccia "RubricaView".
             UtilityClass.stage.close();
             UtilityClass.openNewStage(new Scene(App.loadFXML("RubricaView")));
             
         }
     } 
-
+    
+    /**
+     * @brief Metodo per tornare all'interfaccia precedente: "RubricaView".
+     *  
+     * @param[in] event Il metodo prende in ingresso l'evento di pressione del bottone che indica una freccia che torna indietro.  
+     * @return Nessun valore di ritorno.
+     * 
+     * @author Nicola Viscito.
+     * @throws IOException 
+     */
     @FXML
     private void goBack(ActionEvent event) throws IOException {
         UtilityClass.stage.close();
