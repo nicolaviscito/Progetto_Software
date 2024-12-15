@@ -32,6 +32,10 @@ public class UtilityClass {
     public static ElencoUtenti elencoUtenti = new ElencoUtenti();   ///< Attributo per risalire alla lista di utenti.
     public static ElencoContatti elencoContatti = new ElencoContatti(); ///< Attributo per risalire alla lista di contatti dell'utente che ha effettuato l'accesso.
     
+    /**
+     * @brief Metodo per la gestione delle varie scene.
+     * @param[in] scene Il metodo prende in ingresso una scena. 
+     */
     public static void openNewStage(Scene scene){
         stage = new Stage();
         stage.setScene(scene);
@@ -125,17 +129,17 @@ public class UtilityClass {
             writer.write(";");
             writer.write(c.getCognome());
             writer.write(";");
-            writer.write(c.getNumTel1());
-            writer.write(";");
-            writer.write(c.getNumTel2());
-            writer.write(";");
-            writer.write(c.getNumTel3());
-            writer.write(";");
             writer.write(c.getEmail1());
             writer.write(";");
             writer.write(c.getEmail2());
             writer.write(";");
             writer.write(c.getEmail3());
+            writer.write(";");
+            writer.write(c.getNumTel1());
+            writer.write(";");
+            writer.write(c.getNumTel2());
+            writer.write(";");
+            writer.write(c.getNumTel3());
             writer.write(";");
             writer.newLine();
         }        

@@ -20,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import utenteContatto.Contatto;
 import utenteContatto.ElencoContatti;
 import utenteContatto.Utente;
@@ -43,13 +44,7 @@ public class ModifyContactViewController implements Initializable {
      * nell'interfaccia "RubricaView", ideati e scritti da Giuseppe Messalino e Paolo Vitale.
      */
     private String selectionedContactName;
-    public String selectionedContactSurname;
-    public String selectionedContactEmail1;
-    public String selectionedContactEmail2;
-    public String selectionedContactEmail3;
-    public String selectionedContactTelephone1;
-    public String selectionedContactTelephone2;
-    public String selectionedContactTelephone3;
+    
     @FXML
     private TextField newSurnameField;
     @FXML

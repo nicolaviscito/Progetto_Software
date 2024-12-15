@@ -29,6 +29,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import utenteContatto.Contatto;
+import utenteContatto.ElencoContatti;
 
 /**
  * @file RubricaviewController.java
@@ -43,13 +44,7 @@ import utenteContatto.Contatto;
 public class RubricaViewController implements Initializable {
     private ObservableList<Contatto> elencoContattiOsservabile = FXCollections.observableArrayList();
     public static String selectionedName;
-    public static String selectionedSurname;
-    public static String selectionedEmail1;
-    public static String selectionedEmail2;
-    public static String selectionedEmail3;
-    public static String selectionedPhone1;
-    public static String selectionedPhone2;
-    public static String selectionedPhone3;
+    
     @FXML
     private TextField searchField;
     @FXML
@@ -146,6 +141,7 @@ public class RubricaViewController implements Initializable {
                 c.getNumTel1().equals(phoneLabel1.getText()) &&
                 c.getNumTel2().equals(phoneLabel2.getText()) &&
                 c.getNumTel3().equals(phoneLabel3.getText())) {
+                System.out.println("contatto trovato");
                 contattoDaEliminare = c;    ///< Assegnazione dell'utente da eliminare in una variabile d'appoggio.
                 break; // Esci dal ciclo dopo aver trovato il contatto
             }
@@ -170,6 +166,10 @@ public class RubricaViewController implements Initializable {
                 pw.append('\n');
             }
         }
+        
+        ///< Ricarica dell'interfaccia della rubrica.
+        UtilityClass.stage.close();
+        UtilityClass.openNewStage(new Scene (App.loadFXML("RubricaView")));
     }
     
     /**
@@ -244,6 +244,18 @@ public class RubricaViewController implements Initializable {
                     if(c.getCognome().equals(""))
                         surnameLabel.setText("");
                     else surnameLabel.setText(c.getCognome());
+
+                    if(c.getEmail1().equals(""))
+                        mailLabel1.setText("");
+                    else mailLabel1.setText(c.getEmail1());
+                    
+                    if(c.getEmail2().equals(""))
+                        mailLabel2.setText("");
+                    else mailLabel2.setText(c.getEmail2());
+                    
+                    if(c.getEmail3().equals(""))
+                        mailLabel3.setText("");
+                    else mailLabel3.setText(c.getEmail3()); 
                     
                     if(c.getNumTel1().equals(""))
                         phoneLabel1.setText("");
@@ -255,19 +267,7 @@ public class RubricaViewController implements Initializable {
                     
                     if(c.getNumTel3().equals(""))
                         phoneLabel3.setText("");
-                    else phoneLabel3.setText(c.getNumTel3());                                                                                                                              
-                    
-                    if(c.getEmail1().equals(""))
-                        mailLabel1.setText("");
-                    else mailLabel1.setText(c.getEmail1());
-                    
-                    if(c.getEmail2().equals(""))
-                        mailLabel2.setText("");
-                    else mailLabel2.setText(c.getEmail2());
-                    
-                    if(c.getEmail3().equals(""))
-                        mailLabel3.setText("");
-                    else mailLabel3.setText(c.getEmail3());                    
+                    else phoneLabel3.setText(c.getNumTel3());                   
                 }
             }             
         }
