@@ -93,9 +93,9 @@ public class ModifyUserViewController implements Initializable {
             try(BufferedReader reader = new BufferedReader(new FileReader("ElencoUtenti.csv"))){
                 String line = reader.readLine();
             
-            do{ 
-            }while((line = reader.readLine()) != null);   
-        }             
+                do{ 
+                }while((line = reader.readLine()) != null);   
+            }             
         }
        
        UtilityClass.stage.close();

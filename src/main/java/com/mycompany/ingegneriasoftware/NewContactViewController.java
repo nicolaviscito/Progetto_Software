@@ -86,12 +86,13 @@ public class NewContactViewController implements Initializable {
             Contatto c = new Contatto(
                                     newNameField.getText().isEmpty() ? "" : newNameField.getText(),
                                     newSurnameField.getText().isEmpty() ? "" : newSurnameField.getText(),
-                                    newEmail1Field.getText().isEmpty() ? "" : newEmail1Field.getText(),
-                                    newEmail2Field.getText().isEmpty() ? "" : newEmail2Field.getText(),
-                                    newEmail3Field.getText().isEmpty() ? "" : newEmail3Field.getText(),
                                     newTelephone1Field.getText().isEmpty() ? "" : newTelephone1Field.getText(),
                                     newTelephone2Field.getText().isEmpty() ? "" : newTelephone2Field.getText(),
-                                    newTelephone3Field.getText().isEmpty() ? "" : newTelephone3Field.getText()
+                                    newTelephone3Field.getText().isEmpty() ? "" : newTelephone3Field.getText(),
+                                    newEmail1Field.getText().isEmpty() ? "" : newEmail1Field.getText(),
+                                    newEmail2Field.getText().isEmpty() ? "" : newEmail2Field.getText(),
+                                    newEmail3Field.getText().isEmpty() ? "" : newEmail3Field.getText()
+                                    
             );
             
             ///< Aggiunta del contatto appena creato alla lista dei contatti.

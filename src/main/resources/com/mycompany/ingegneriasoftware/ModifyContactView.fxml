@@ -71,5 +71,10 @@
          </font>
       </Button>
       <Label fx:id="errorLabel" layoutX="165.0" layoutY="369.0" prefHeight="21.0" prefWidth="286.0" textAlignment="CENTER" />
+      <Button fx:id="goBackButton" layoutX="20.0" layoutY="37.0" mnemonicParsing="false" onAction="#goBack" text="&lt;--">
+         <font>
+            <Font name="Cambria Bold" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

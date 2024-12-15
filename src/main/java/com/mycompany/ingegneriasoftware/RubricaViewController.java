@@ -44,6 +44,7 @@ import utenteContatto.ElencoContatti;
 public class RubricaViewController implements Initializable {
     private ObservableList<Contatto> elencoContattiOsservabile = FXCollections.observableArrayList();
     public static String selectionedName;
+    public static String selectionedSurname;
     
     @FXML
     private TextField searchField;
@@ -232,9 +233,11 @@ public class RubricaViewController implements Initializable {
             this.infoPanel.setOpacity(1);
             this.delateButton.setDisable(false);
             this.modifyButton.setDisable(false);
-        
+            
             String selectedContact = contactBox.getSelectionModel().getSelectedItem().getNome();
             selectionedName = contactBox.getSelectionModel().getSelectedItem().getNome();
+            selectionedSurname = contactBox.getSelectionModel().getSelectedItem().getCognome();
+            
             for(Contatto c : elencoContattiOsservabile){
                 if(c.getNome().equals(selectedContact)){
                     if(c.getNome().equals(""))
