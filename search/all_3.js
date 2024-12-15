@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['getcognome_0',['getCognome',['../classutente_contatto_1_1_contatto.html#a90ddba008eeb8050b0f24e7c08b71140',1,'utenteContatto::Contatto']]],
+  ['getelencocontatti_1',['getElencoContatti',['../classutente_contatto_1_1_elenco_contatti.html#acc992545480099bb4dd6513ffe6bf2b1',1,'utenteContatto::ElencoContatti']]],
+  ['getemail_2',['getEmail',['../classutente_contatto_1_1_utente.html#a577ce139702ea45d0b194487202877fd',1,'utenteContatto::Utente']]],
+  ['getemail1_3',['getEmail1',['../classutente_contatto_1_1_contatto.html#abeb39104ef0012bd65c7bfa672aaf140',1,'utenteContatto::Contatto']]],
+  ['getemail2_4',['getEmail2',['../classutente_contatto_1_1_contatto.html#ac69e917a8e2961490937a2d7afc96203',1,'utenteContatto::Contatto']]],
+  ['getemail3_5',['getEmail3',['../classutente_contatto_1_1_contatto.html#afddb0b50aa007eaedaf780a2115c8e86',1,'utenteContatto::Contatto']]],
+  ['getlistautenti_6',['getListaUtenti',['../classutente_contatto_1_1_elenco_utenti.html#a05c60db8d4a0438a977ecd6095e4cf86',1,'utenteContatto::ElencoUtenti']]],
+  ['getname_7',['getName',['../classutente_contatto_1_1_utente.html#a2c79df388ea680e40c4a95f9b315f6ef',1,'utenteContatto::Utente']]],
+  ['getnome_8',['getNome',['../classutente_contatto_1_1_contatto.html#afe1a959ea2500968ec7e8f549ae847a6',1,'utenteContatto::Contatto']]],
+  ['getnumtel_9',['getNumtel',['../classutente_contatto_1_1_utente.html#ae7a094f2f4de63234f795bad86e6a836',1,'utenteContatto::Utente']]],
+  ['getnumtel1_10',['getNumTel1',['../classutente_contatto_1_1_contatto.html#a47e654211bb0c9d6493e9f4c2b375278',1,'utenteContatto::Contatto']]],
+  ['getnumtel2_11',['getNumTel2',['../classutente_contatto_1_1_contatto.html#a3ad41b0ffee8150c1aa3a1afac665120',1,'utenteContatto::Contatto']]],
+  ['getnumtel3_12',['getNumTel3',['../classutente_contatto_1_1_contatto.html#a3acd8d6ae3913a6de9e87a0290486193',1,'utenteContatto::Contatto']]],
+  ['getpassword_13',['getPassword',['../classutente_contatto_1_1_utente.html#afdb486792eab3b80460957483fe7e3c6',1,'utenteContatto::Utente']]],
+  ['getsurname_14',['getSurname',['../classutente_contatto_1_1_utente.html#ab91c29c085a57bea592bcce4084de12d',1,'utenteContatto::Utente']]],
+  ['getusername_15',['getUsername',['../classutente_contatto_1_1_utente.html#ac64b9569c6b72aee505483c072af7ea4',1,'utenteContatto::Utente']]]
+];
