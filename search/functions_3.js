@@ -1,9 +1,19 @@
 var searchData=
 [
-  ['gestionecontatto_0',['GestioneContatto',['../classit_1_1unisa_1_1diem_1_1ing__software_1_1gestionecontatti_1_1_gestione_contatto.html#abb9140faeb98037b3d40815060f267f3',1,'it::unisa::diem::ing_software::gestionecontatti::GestioneContatto']]],
-  ['gestionefileesterno_1',['GestioneFileEsterno',['../classit_1_1unisa_1_1diem_1_1ing__software_1_1gestionecontatti_1_1_gestione_file_esterno.html#a1d69ceca0e2cca8413a135ef0b3477ec',1,'it::unisa::diem::ing_software::gestionecontatti::GestioneFileEsterno']]],
-  ['getcognome_2',['getCognome',['../classit_1_1unisa_1_1diem_1_1ing__software_1_1gestionecontatti_1_1_contatto.html#ae475493fa997fb46b66ca498eef548a0',1,'it::unisa::diem::ing_software::gestionecontatti::Contatto']]],
-  ['getemail_3',['getEmail',['../classit_1_1unisa_1_1diem_1_1ing__software_1_1gestionecontatti_1_1_contatto.html#a3a15e4ddb2db20df6e56614815b6c84c',1,'it::unisa::diem::ing_software::gestionecontatti::Contatto']]],
-  ['getnome_4',['getNome',['../classit_1_1unisa_1_1diem_1_1ing__software_1_1gestionecontatti_1_1_contatto.html#afd26aa202e0dfb4c790d55d4c377585b',1,'it::unisa::diem::ing_software::gestionecontatti::Contatto']]],
-  ['getnumtel_5',['getNumTel',['../classit_1_1unisa_1_1diem_1_1ing__software_1_1gestionecontatti_1_1_contatto.html#ac05c790bed8dff9bc9d0fa48c568804b',1,'it::unisa::diem::ing_software::gestionecontatti::Contatto']]]
+  ['getcognome_0',['getCognome',['../classutente_contatto_1_1_contatto.html#a90ddba008eeb8050b0f24e7c08b71140',1,'utenteContatto::Contatto']]],
+  ['getelencocontatti_1',['getElencoContatti',['../classutente_contatto_1_1_elenco_contatti.html#acc992545480099bb4dd6513ffe6bf2b1',1,'utenteContatto::ElencoContatti']]],
+  ['getemail_2',['getEmail',['../classutente_contatto_1_1_utente.html#a577ce139702ea45d0b194487202877fd',1,'utenteContatto::Utente']]],
+  ['getemail1_3',['getEmail1',['../classutente_contatto_1_1_contatto.html#abeb39104ef0012bd65c7bfa672aaf140',1,'utenteContatto::Contatto']]],
+  ['getemail2_4',['getEmail2',['../classutente_contatto_1_1_contatto.html#ac69e917a8e2961490937a2d7afc96203',1,'utenteContatto::Contatto']]],
+  ['getemail3_5',['getEmail3',['../classutente_contatto_1_1_contatto.html#afddb0b50aa007eaedaf780a2115c8e86',1,'utenteContatto::Contatto']]],
+  ['getlistautenti_6',['getListaUtenti',['../classutente_contatto_1_1_elenco_utenti.html#a05c60db8d4a0438a977ecd6095e4cf86',1,'utenteContatto::ElencoUtenti']]],
+  ['getname_7',['getName',['../classutente_contatto_1_1_utente.html#a2c79df388ea680e40c4a95f9b315f6ef',1,'utenteContatto::Utente']]],
+  ['getnome_8',['getNome',['../classutente_contatto_1_1_contatto.html#afe1a959ea2500968ec7e8f549ae847a6',1,'utenteContatto::Contatto']]],
+  ['getnumtel_9',['getNumtel',['../classutente_contatto_1_1_utente.html#ae7a094f2f4de63234f795bad86e6a836',1,'utenteContatto::Utente']]],
+  ['getnumtel1_10',['getNumTel1',['../classutente_contatto_1_1_contatto.html#a47e654211bb0c9d6493e9f4c2b375278',1,'utenteContatto::Contatto']]],
+  ['getnumtel2_11',['getNumTel2',['../classutente_contatto_1_1_contatto.html#a3ad41b0ffee8150c1aa3a1afac665120',1,'utenteContatto::Contatto']]],
+  ['getnumtel3_12',['getNumTel3',['../classutente_contatto_1_1_contatto.html#a3acd8d6ae3913a6de9e87a0290486193',1,'utenteContatto::Contatto']]],
+  ['getpassword_13',['getPassword',['../classutente_contatto_1_1_utente.html#afdb486792eab3b80460957483fe7e3c6',1,'utenteContatto::Utente']]],
+  ['getsurname_14',['getSurname',['../classutente_contatto_1_1_utente.html#ab91c29c085a57bea592bcce4084de12d',1,'utenteContatto::Utente']]],
+  ['getusername_15',['getUsername',['../classutente_contatto_1_1_utente.html#ac64b9569c6b72aee505483c072af7ea4',1,'utenteContatto::Utente']]]
 ];

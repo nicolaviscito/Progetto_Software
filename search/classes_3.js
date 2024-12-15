@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['rubrica_0',['Rubrica',['../class_rubrica_main_1_1_rubrica.html',1,'RubricaMain']]]
+  ['loginviewcontroller_0',['LoginViewController',['../classcom_1_1mycompany_1_1ingegneriasoftware_1_1_login_view_controller.html',1,'com::mycompany::ingegneriasoftware']]]
 ];

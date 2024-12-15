@@ -1,8 +1,13 @@
 var searchData=
 [
-  ['elencotelefonico_0',['ElencoTelefonico',['../classit_1_1unisa_1_1diem_1_1ing__software_1_1gestionecontatti_1_1_elenco_telefonico.html',1,'it.unisa.diem.ing_software.gestionecontatti.ElencoTelefonico'],['../classit_1_1unisa_1_1diem_1_1ing__software_1_1gestionecontatti_1_1_elenco_telefonico.html#a09e5e32f432bf1e8e00700cae1bd7460',1,'it.unisa.diem.ing_software.gestionecontatti.ElencoTelefonico.ElencoTelefonico()']]],
-  ['elencotelefonico_2ejava_1',['ElencoTelefonico.java',['../_elenco_telefonico_8java.html',1,'']]],
-  ['eliminacontatto_2',['eliminaContatto',['../classit_1_1unisa_1_1diem_1_1ing__software_1_1gestionecontatti_1_1_elenco_telefonico.html#ac77ddf95eab563fb4c6395eda65da1ec',1,'it::unisa::diem::ing_software::gestionecontatti::ElencoTelefonico']]],
-  ['eliminaemail_3',['eliminaEmail',['../classit_1_1unisa_1_1diem_1_1ing__software_1_1gestionecontatti_1_1_gestione_contatto.html#ac01d1bc26f38e1f6323c218fd6b71ca1',1,'it::unisa::diem::ing_software::gestionecontatti::GestioneContatto']]],
-  ['eliminanumtel_4',['eliminaNumTel',['../classit_1_1unisa_1_1diem_1_1ing__software_1_1gestionecontatti_1_1_gestione_contatto.html#a5baecd914acd63d59f1bfa20a4cfaba2',1,'it::unisa::diem::ing_software::gestionecontatti::GestioneContatto']]]
+  ['elencocontatti_0',['ElencoContatti',['../classutente_contatto_1_1_elenco_contatti.html',1,'utenteContatto.ElencoContatti'],['../classutente_contatto_1_1_elenco_contatti.html#ab08513aa80f8cf11d67703a9e213342d',1,'utenteContatto.ElencoContatti.ElencoContatti()']]],
+  ['elencocontatti_1',['elencoContatti',['../classcom_1_1mycompany_1_1ingegneriasoftware_1_1_utility_class.html#a731874324b0f820d2910ff4df960ebac',1,'com::mycompany::ingegneriasoftware::UtilityClass']]],
+  ['elencocontatti_2ejava_2',['ElencoContatti.java',['../_elenco_contatti_8java.html',1,'']]],
+  ['elencocontattitest_3',['ElencoContattiTest',['../classutente_contatto_test_1_1_elenco_contatti_test.html',1,'utenteContattoTest']]],
+  ['elencocontattitest_2ejava_4',['ElencoContattiTest.java',['../_elenco_contatti_test_8java.html',1,'']]],
+  ['elencoutenti_5',['ElencoUtenti',['../classutente_contatto_1_1_elenco_utenti.html',1,'utenteContatto.ElencoUtenti'],['../classutente_contatto_1_1_elenco_utenti.html#aa0aa159f2879de08ca52f58bf545fe87',1,'utenteContatto.ElencoUtenti.ElencoUtenti()']]],
+  ['elencoutenti_6',['elencoUtenti',['../classcom_1_1mycompany_1_1ingegneriasoftware_1_1_utility_class.html#a38ba4b19446c64db5c003750115f6628',1,'com::mycompany::ingegneriasoftware::UtilityClass']]],
+  ['elencoutenti_2ejava_7',['ElencoUtenti.java',['../_elenco_utenti_8java.html',1,'']]],
+  ['elencoutentitest_8',['ElencoUtentiTest',['../classutente_contatto_test_1_1_elenco_utenti_test.html',1,'utenteContattoTest']]],
+  ['elencoutentitest_2ejava_9',['ElencoUtentiTest.java',['../_elenco_utenti_test_8java.html',1,'']]]
 ];

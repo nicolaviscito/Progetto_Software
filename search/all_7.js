@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['rubrica_0',['Rubrica',['../class_rubrica_main_1_1_rubrica.html',1,'RubricaMain']]],
-  ['rubrica_2ejava_1',['Rubrica.java',['../_rubrica_8java.html',1,'']]],
-  ['rubricamain_2',['RubricaMain',['../namespace_rubrica_main.html',1,'']]]
+  ['newcontactviewcontroller_0',['NewContactViewController',['../classcom_1_1mycompany_1_1ingegneriasoftware_1_1_new_contact_view_controller.html',1,'com::mycompany::ingegneriasoftware']]],
+  ['newcontactviewcontroller_2ejava_1',['NewContactViewController.java',['../_new_contact_view_controller_8java.html',1,'']]]
 ];

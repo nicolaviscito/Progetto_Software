@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['elencotelefonico_0',['ElencoTelefonico',['../classit_1_1unisa_1_1diem_1_1ing__software_1_1gestionecontatti_1_1_elenco_telefonico.html',1,'it::unisa::diem::ing_software::gestionecontatti']]]
+  ['contatto_0',['Contatto',['../classutente_contatto_1_1_contatto.html',1,'utenteContatto']]],
+  ['contattotest_1',['ContattoTest',['../classutente_contatto_test_1_1_contatto_test.html',1,'utenteContattoTest']]]
 ];
